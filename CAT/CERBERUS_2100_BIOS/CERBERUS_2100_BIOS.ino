@@ -60,6 +60,9 @@
 
 /** These libraries are built into the arduino IDE  **/
 
+// Suppress inlining in the libraries
+#define always_inline
+
 #include <SPI.h>
 #include <SD.h>
 #include <TimerOne.h>
@@ -1053,38 +1056,38 @@ void cprintStatus(byte status) {
   	/** REMEMBER: The macro "F()" simply tells the compiler to put the string in code memory, so to save dynamic memory **/
   	switch( status ) {
     	case STATUS_BOOT:
-      		center(F("Here we go! Hang on..."));
+      		center(F("Booting"));
       		break;
     	case STATUS_READY:
-      		center(F("Alright, done!"));
+      		center(F("Done"));
       		break;
     	case STATUS_UNKNOWN_COMMAND:
-      		center(F("Darn, unrecognized command"));
+      		center(F("Unknown command"));
       		tone(SOUND, 50, 150);
       		break;
     	case STATUS_NO_FILE:
-      		center(F("Oops, file doesn't seem to exist"));
+      		center(F("File not found"));
       		tone(SOUND, 50, 150);
       		break;
     	case STATUS_CANNOT_OPEN:
-      		center(F("Oops, couldn't open the file"));
+      		center(F("Can't open file"));
       		tone(SOUND, 50, 150);
       		break;
     	case STATUS_MISSING_OPERAND:
-      		center(F("Oops, missing an operand!!"));
+      		center(F("Missing operand"));
       		tone(SOUND, 50, 150);
       		break;
     	case STATUS_SCROLL_PROMPT:
       		center(F("Press a key to scroll, ESC to stop"));
       		break;
     	case STATUS_FILE_EXISTS:
-      		center(F("The file already exists!"));
+      		center(F("File already exists"));
       	break;
     		case STATUS_ADDRESS_ERROR:
-      	center(F("Oops, invalid address range!"));
+      	    center(F("Invalid address range"));
       		break;
     	case STATUS_POWER:
-      		center(F("Feel the power of Dutch design!!"));
+      		center(F("Feel the power of Dutch design!"));
       		break;
     	default:
       		cprintString(2, 27, F("      CERBERUS 2100: "));
