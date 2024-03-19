@@ -445,6 +445,10 @@ void messageHandler(void) {
 					}
 					break;
 
+				case 0x50: 
+					cmdSetTimerFrequency(address);
+					break;
+
         case 0x7E:
           cmdSoundNb(address);
           status = STATUS_READY;
@@ -551,6 +555,11 @@ int cmdFileRead(unsigned int address) {
 int cmdFileSeek(unsigned int address) {
     unsigned long filePosition = cpeekL(address);
     return fileHandle.seek(filePosition) ? STATUS_READY : STATUS_EOF;
+}
+
+void cmdSetTimerFrequency(unsigned int address) {
+    unsigned long microseconds = cpeekL(address);
+    Timer1.setPeriod(microseconds);
 }
 
 /************************************************************************************************/
