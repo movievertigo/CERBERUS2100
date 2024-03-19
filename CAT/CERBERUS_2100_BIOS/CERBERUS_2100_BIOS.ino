@@ -153,6 +153,7 @@ volatile bool cpurunning = false;			/** true = CPU is running, CAT should not us
 volatile bool interruptFlag = false;		/** true = Triggered by interrupt **/
 volatile bool fast = true;	/** true = 8 MHz CPU clock, false = 4 MHz CPU clock **/
  File cd;							/** Used by BASIC directory commands **/
+ File fileHandle;                   /** Used by file open command **/
 volatile bool expflag = false;
 void(* resetFunc) (void) = 0;       		/** Software reset fuction at address 0 **/
 
@@ -415,6 +416,32 @@ void messageHandler(void) {
 						retVal = (byte)(status + 0x80);
 					}
 					break;
+
+				case 0x40: 
+					status = cmdFileOpen(address);
+					if(status != STATUS_READY) {
+						retVal = (byte)(status + 0x80);
+					}
+					break;
+				case 0x41: 
+					status = cmdFileClose(address);
+					if(status != STATUS_READY) {
+						retVal = (byte)(status + 0x80);
+					}
+					break;
+				case 0x42: 
+					status = cmdFileRead(address);
+					if(status != STATUS_READY) {
+						retVal = (byte)(status + 0x80);
+					}
+					break;
+				case 0x43: 
+					status = cmdFileSeek(address);
+					if(status != STATUS_READY) {
+						retVal = (byte)(status + 0x80);
+					}
+					break;
+
         case 0x7E:
           cmdSoundNb(address);
           status = STATUS_READY;
@@ -493,6 +520,34 @@ int cmdCatEntry(unsigned int address) {		// Subsequent calls to this will read t
 	cpokeStr(address + 4, entry.name());	// Followed by the filename, zero terminated
 	entry.close();							// Close the directory entry
 	return STATUS_READY;					// Return READY
+}
+
+// Handle opening a file
+int cmdFileOpen(unsigned int address) {
+    cpeekStr(address, editLine, 38);
+    return fileOpen((char *)editLine);
+}
+
+// Handle closing a file
+int cmdFileClose(unsigned int address) {
+    fileHandle.close();
+    return STATUS_READY;
+}
+
+// Handle reading from a file
+int cmdFileRead(unsigned int address) {
+    int result;
+    unsigned int startAddr = cpeekW(address);
+    unsigned int byteCount = cpeekW(address+2);
+    result = fileRead(startAddr, byteCount);
+    cpokeW(address+2, bytesRead);
+    return result;
+}
+
+// Handle seeking in a file
+int cmdFileSeek(unsigned int address) {
+    unsigned long filePosition = cpeekL(address);
+    return fileHandle.seek(filePosition) ? STATUS_READY : STATUS_EOF;
 }
 
 /************************************************************************************************/
@@ -941,6 +996,40 @@ int load(String filename, unsigned int startAddr) {
   return status;
 }
 
+int fileOpen(String filename)
+{
+    int status = STATUS_DEFAULT;
+    if (filename == "") {
+	    status = STATUS_MISSING_OPERAND;
+    } else {
+        if (!SD.exists(filename)) {
+            status = STATUS_NO_FILE;
+        } else {
+            fileHandle = SD.open(filename);
+            if (!fileHandle) {
+                status = STATUS_CANNOT_OPEN;
+            } else {
+                status = STATUS_READY;
+            }
+        }
+    }
+    return status;
+}
+
+int fileRead(unsigned int address, unsigned int byteCount)
+{
+    bytesRead = 0;
+    while (byteCount > 0 && fileHandle.available()) {   /** While we haven't read enough data and there is data to be read... **/
+        byteCount--;
+        bytesRead++;
+        cpoke(address++, fileHandle.read());   /** Read data from file and store it in memory **/
+        if (address == 0) {                    /** Break if address wraps around to the start of memory **/
+           	break;
+        }
+    }
+    return STATUS_READY;
+}
+
 void cprintEditLine () {
   	byte i;
   	for (i = 0; i < 38; i++) cprintChar(i + 2, 29, editLine[i]);
@@ -1227,6 +1316,10 @@ byte cpeek(unsigned int address) {
 
 unsigned int cpeekW(unsigned int address) {
   return (cpeek(address) | (cpeek(address+1) << 8));
+}
+
+unsigned long cpeekL(unsigned int address) {
+  return (((unsigned long)cpeek(address)) | (((unsigned long)cpeek(address+1)) << 8) | (((unsigned long)cpeek(address+2)) << 16) | (((unsigned long)cpeek(address+3)) << 24));
 }
 
 boolean cpeekStr(unsigned int address, volatile char * dest, int max) {
