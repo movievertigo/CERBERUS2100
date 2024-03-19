@@ -416,30 +416,32 @@ void messageHandler(void) {
 						retVal = (byte)(status + 0x80);
 					}
 					break;
-				case 0x07: 
+
+				case 0x40: 
 					status = cmdFileOpen(address);
 					if(status != STATUS_READY) {
 						retVal = (byte)(status + 0x80);
 					}
 					break;
-				case 0x08: 
+				case 0x41: 
 					status = cmdFileClose(address);
 					if(status != STATUS_READY) {
 						retVal = (byte)(status + 0x80);
 					}
 					break;
-				case 0x09: 
+				case 0x42: 
 					status = cmdFileRead(address);
 					if(status != STATUS_READY) {
 						retVal = (byte)(status + 0x80);
 					}
 					break;
-				case 0x0A: 
+				case 0x43: 
 					status = cmdFileSeek(address);
 					if(status != STATUS_READY) {
 						retVal = (byte)(status + 0x80);
 					}
 					break;
+
         case 0x7E:
           cmdSoundNb(address);
           status = STATUS_READY;
