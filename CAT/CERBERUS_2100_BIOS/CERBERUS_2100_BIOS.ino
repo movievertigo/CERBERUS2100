@@ -74,7 +74,7 @@
 
 /** Compilation defaults **/
 #define	config_dev_mode	0			// Turn off various BIOS outputs to speed up development, specifically uploading code
-#define config_silent 0				// Turn off the startup jingle
+#define config_silent 1				// Turn off the startup jingle
 #define config_enable_nmi 1			// Turn on the 50hz NMI timer when CPU is running. If set to 0 will only trigger an NMI on keypress
 #define config_outbox_flag 0x0200	// Outbox flag memory location (byte)
 #define config_outbox_data 0x0201	// Outbox data memory location (byte)
