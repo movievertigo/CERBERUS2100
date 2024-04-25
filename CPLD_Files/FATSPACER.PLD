@@ -107,7 +107,7 @@ pin 21 = FREE; /** Connected to FAT-CAT **/
 /** Buried states **/
 /*******************/
 Pinnode = DELAY;      /** Internal delay state useful for controling the 6502 **/
-Pinnode = [C1..0];    /** Internal states of the clock divider counter **/
+Pinnode = [C3..0];    /** Internal states of the clock divider counter **/
 Pinnode = [SLR0..23]; /** Shift Left Register internal states, defined separately to SLRO0..23 **/
                       /** so as to circumvent a bug in the CUPL software. It ensures the shif register **/
                       /** uses the output of the flip-flops, instead of the .io signal after the buffers. **/
@@ -219,13 +219,15 @@ RSTZ80     = !( CPUSLC  &  CPURST);            /** !Reset the Z80 if it's select
 /****************************/
 
 /** BELOW: Clock divider based on a counter (using T flip-flops to count) **/
+C3.t = C2 & C1 & C0;
+C2.t = C1 & C0;
 C1.t = C0;
 C0.t = 'b'1;
-[C1..0].ck = CLK;                           /** CLK is the input from oscillator, running at 16MHz **/
-[C1..0].ar = RST;                           /** Global asynchronous reset also resets this counter **/
+[C3..0].ck = CLK;                           /** CLK is the input from oscillator, running at 16MHz **/
+[C3..0].ar = RST;                           /** Global asynchronous reset also resets this counter **/
 
 /** Now to the three separate clocks **/
-RAWCPUCLK = (!CPUSPD & C1) # (CPUSPD & C0); /** An internal variable that selects the CPU clock speed, used below **/
+RAWCPUCLK = (!CPUSPD & FREE & C3) # (CPUSPD & FREE & C2) # (!CPUSPD & !FREE & C1) # (CPUSPD & !FREE & C0); /** An internal variable that selects the CPU clock speed, used below **/
 XCLK      =   RAWCPUCLK;                    /** Clock for the expanion slot **/
 CLK6502   =  !CPUSLC & RAWCPUCLK;           /** Provide clock to 6502 only if the latter is selected **/
 CLKZ80    =   CPUSLC & RAWCPUCLK;           /** Provide clock to Z80 only if the latter is selected **/

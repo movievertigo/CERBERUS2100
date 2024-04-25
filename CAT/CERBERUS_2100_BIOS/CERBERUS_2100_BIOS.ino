@@ -81,8 +81,9 @@
 #define config_inbox_flag 0x0202	// Inbox flag memory location (byte)
 #define config_inbox_data 0x0203	// Inbox data memory location (word)
 #define config_code_start 0x0205	// Start location of code
-#define config_eeprom_address_mode    0 // First EEPROM location
-#define config_eeprom_address_speed   1 // Second EEPROM location
+#define config_eeprom_address_mode          0 // First EEPROM location
+#define config_eeprom_address_speed         1 // Second EEPROM location
+#define config_eeprom_address_quarterspeed  2 // Third EEPROM location
 
 /** The next pins go to FAT-SPACER **/
 #define SI 19      /** Serial Input, pin 28 on FAT-CAT **/
@@ -155,6 +156,7 @@ volatile bool mode = false;	/** false = 6502 mode, true = Z80 mode**/
 volatile bool cpurunning = false;			/** true = CPU is running, CAT should not use the buses **/
 volatile bool interruptFlag = false;		/** true = Triggered by interrupt **/
 volatile bool fast = true;	/** true = 8 MHz CPU clock, false = 4 MHz CPU clock **/
+volatile bool quarterspeed = false;	/** true = Divide clock by 4 **/
  File cd;							/** Used by BASIC directory commands **/
  File fileHandle;                   /** Used by file open command **/
 volatile bool expflag = false;
@@ -180,8 +182,15 @@ void setup() {
   if((fast != 0) && (fast != 1))
   {
     fast = 0;
-    EEPROM.write(config_eeprom_address_speed,0);
+    // EEPROM written in setSpeed call below to save memory
   }
+  quarterspeed = EEPROM.read(config_eeprom_address_quarterspeed);
+  if((quarterspeed != 0) && (quarterspeed != 1))
+  {
+    quarterspeed = 0;
+    // EEPROM written in setSpeed call below to save memory
+  }
+
 	/** First, declaring all the pins **/
   	pinMode(SO, OUTPUT);
   	pinMode(SI, INPUT);               /** There will be pull-up and pull-down resistors in circuit **/
@@ -190,6 +199,7 @@ void setup() {
   	pinMode(LD, OUTPUT);
   	pinMode(RW, OUTPUT);
   	pinMode(CPUSPD, OUTPUT);
+  	pinMode(FREE, OUTPUT);
   	pinMode(KCLK, INPUT_PULLUP);      /** But here we need CAT's internal pull-up resistor **/
   	pinMode(KDAT, INPUT_PULLUP);      /** And here too **/
   	pinMode(CPUSLC, OUTPUT);
@@ -204,8 +214,8 @@ void setup() {
   	digitalWrite(AOE, LOW);
   	digitalWrite(LD, LOW);
   	digitalWrite(SC, LOW);
-  	digitalWrite(CPUSPD, fast);
-  	digitalWrite(CPUSLC, mode);
+    setSpeed(fast, quarterspeed);
+ 	digitalWrite(CPUSLC, mode);
   	digitalWrite(CPUIRQ, LOW);
   	digitalWrite(CPUGO, LOW);
   	digitalWrite(CPURST, LOW);
@@ -643,16 +653,16 @@ void enter() {  /** Called when the user presses ENTER, unless a CPU program is 
     resetFunc();						  /** This resets CAT and, therefore, the CPUs too **/
   /** FAST **********************************************************************************/
   } else if (nextWord == F("fast")) {     /** Sets CPU clock at 8 MHz **/
-    digitalWrite(CPUSPD, HIGH);
-    fast = true;
-    EEPROM.write(config_eeprom_address_speed,1);
-    cprintStatus(STATUS_READY);
+    setSpeed(true, false);
   /** SLOW **********************************************************************************/
   } else if (nextWord == F("slow")) {     /** Sets CPU clock at 4 MHz **/
-    digitalWrite(CPUSPD, LOW);
-    fast = false;
-    EEPROM.write(config_eeprom_address_speed,0);
-    cprintStatus(STATUS_READY);
+    setSpeed(false, false);
+  /** 2MHZ **********************************************************************************/
+  } else if (nextWord == F("2mhz")) {     /** Sets CPU clock at 2 MHz **/
+    setSpeed(true, true);
+  /** 1MHZ **********************************************************************************/
+  } else if (nextWord == F("1mhz")) {     /** Sets CPU clock at 1 MHz **/
+    setSpeed(false, true);
   /** DIR ***********************************************************************************/
   } else if (nextWord == F("dir")) {      /** Lists files on uSD card **/
     dir();
@@ -703,6 +713,17 @@ void enter() {  /** Called when the user presses ENTER, unless a CPU program is 
   }
 }
 
+void setSpeed(bool newFast, bool newQuarterspeed)
+{
+    fast = newFast;
+    quarterspeed = newQuarterspeed;
+    digitalWrite(CPUSPD, fast ? HIGH : LOW);
+    digitalWrite(FREE, quarterspeed ? HIGH : LOW);
+    EEPROM.write(config_eeprom_address_speed,fast ? 1 : 0);
+    EEPROM.write(config_eeprom_address_quarterspeed,quarterspeed ? 1 : 0);
+    cprintStatus(STATUS_READY);
+}
+
 String getNextWord(bool fromTheBeginning) {
   /** A very simple parser that returns the next word in the edit line **/
   static byte initialPosition;    /** Start parsing from this point in the edit line **/
@@ -722,28 +743,25 @@ String getNextWord(bool fromTheBeginning) {
 
 void help() {
   cls();
-  cprintString(3, 2,  F("The Byte Attic's CERBERUS 2100 (tm)"));
-  cprintString(3, 3,  F("        AVAILABLE COMMANDS:"));
-  cprintString(3, 4,  F(" (All numbers must be hexadecimal)"));
-  cprintString(3, 6,  F("0xADDR BYTE: Writes BYTE at ADDR"));
-  cprintString(3, 7,  F("list ADDR: Lists memory from ADDR"));
-  cprintString(3, 8,  F("cls: Clears the screen"));
-  cprintString(3, 9,  F("testmem: Reads/writes to memories"));
-  cprintString(3, 10, F("6502: Switches to 6502 CPU mode"));
-  cprintString(3, 11, F("z80: Switches to Z80 CPU mode"));
-  cprintString(3, 12, F("fast: Switches to 8MHz mode"));
-  cprintString(3, 13, F("slow: Switches to 4MHz mode"));
-  cprintString(3, 14, F("reset: Resets the system"));
-  cprintString(3, 15, F("dir: Lists files on uSD card"));
-  cprintString(3, 16, F("del FILE: Deletes FILE"));
-  cprintString(3, 17, F("load FILE ADDR: Loads FILE at ADDR"));
-  cprintString(3, 18, F("save ADDR1 ADDR2 FILE: Saves memory"));
-  cprintString(5, 19, F("from ADDR1 to ADDR2 to FILE"));
-  cprintString(3, 20, F("run: Executes code in memory"));
-  cprintString(3, 21, F("move ADDR1 ADDR2 ADDR3: Moves bytes"));
-  cprintString(5, 22, F("between ADDR1 & ADDR2 to ADDR3 on"));
-  cprintString(3, 23, F("help / ?: Shows this help screen"));
-  cprintString(3, 24, F("F12 key: Quits CPU program"));
+  cprintString(10, 3,  F("AVAILABLE COMMANDS:"));
+  cprintString(10, 4,  F("(All values in hex)"));
+  cprintString(3,  6,  F("0xADDR BYTE: Write BYTE at ADDR"));
+  cprintString(3,  7,  F("list ADDR: List memory from ADDR"));
+  cprintString(3,  8,  F("cls: Clear the screen"));
+  cprintString(3,  9,  F("testmem: Read/write to memories"));
+  cprintString(3,  10, F("6502/z80: Select CPU"));
+  cprintString(3,  11, F("fast/slow/2mhz/1mhz: Set CPU speed"));
+  cprintString(3,  12, F("reset: Reset the system"));
+  cprintString(3,  13, F("dir: List files on uSD card"));
+  cprintString(3,  14, F("del FILE: Delete FILE"));
+  cprintString(3,  15, F("load FILE ADDR: Load FILE at ADDR"));
+  cprintString(3,  16, F("save ADDR1 ADDR2 FILE: Save memory"));
+  cprintString(7,  17, F("from ADDR1 to ADDR2 to FILE"));
+  cprintString(3,  18, F("run: Execute code in memory"));
+  cprintString(3,  19, F("move ADDR1 ADDR2 ADDR3: Move bytes"));
+  cprintString(7,  20, F("between ADDR1 & ADDR2 to ADDR3"));
+  cprintString(3,  21, F("help/?: Show this help screen"));
+  cprintString(3,  22, F("F12 key: Quit CPU program"));
 }
 
 void binMove(String startAddr, String endAddr, String destAddr) {
@@ -1103,8 +1121,7 @@ void cprintStatus(byte status) {
       		cprintString(2, 27, F("      CERBERUS 2100: "));
       		if (mode) cprintString(23, 27, F(" Z80, "));
       		else cprintString(23, 27, F("6502, "));
-      		if (fast) cprintString(29, 27, F("8 MHz"));
-      		else cprintString(29, 27, F("4 MHz"));
+      		cprintString(29, 27, quarterspeed ? (fast ? F("2 MHz") : F("1 MHz")): (fast ? F("8 MHz") : F("4 MHz")));
       		cprintString(34, 27, F("     "));
   	}
 }
