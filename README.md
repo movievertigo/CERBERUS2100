@@ -2,8 +2,8 @@
 This is a fork of the Cerberus 2100 repository that adds a number of extra features and enhancements while remaining compatible with the standard firmware.
 ## Extra features
 ### BIOS commands
-- **2mhz**: Set the CPU clock frequncy to 2MHz (Requires updated FATSPACER)
-- **1mhz**: Set the CPU clock frequncy to 1MHz (Requires updated FATSPACER)
+- **2mhz**: Set the CPU clock frequency to 2MHz (Requires updated FATSPACER)
+- **1mhz**: Set the CPU clock frequency to 1MHz (Requires updated FATSPACER)
 
 ### API commands
 - 0x40: **FileOpen** _(Open the file with the given name)_<br>
