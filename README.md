@@ -1,3 +1,31 @@
+# CERBERUS 2100 - MV Enhanced
+This is a fork of the Cerberus 2100 repository that adds a number of extra features and enhancements while remaining compatible with the standard firmware.
+## Extra features
+### BIOS commands
+- **2mhz**: Set the CPU clock frequncy to 2MHz (Requires updated FATSPACER)
+- **1mhz**: Set the CPU clock frequncy to 1MHz (Requires updated FATSPACER)
+
+### API commands
+- 0x40: **FileOpen** _(Open the file with the given name)_<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;address+0 = Filename
+
+- 0x41: **FileClose** _(Close the currently open file)_
+
+- 0x42: **FileRead** _(Read from the currently open file)_<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;_On entry:_<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;address+0 = Start address (2 bytes) _Where to load the file in memory_<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;address+2 = Byte count (2 bytes) _How many bytes of the file to load_<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;_On exit:_<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;address+2 = Byte read (2 bytes) _The number of bytes actually loaded_<br>
+
+- 0x43: **FileSeek** _(Seek to the given position in the file)_<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;address+0 = File position (4 bytes) _How many bytes through the file to seek to_
+
+- 0x50: **SetTimerFrequency** _(Set the frequency of the interrupt)_<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;address+0 = Time period (4 bytes) _How many microseconds between interrupts_
+
+<hr>
+
 # CERBERUS 2100™
 The software-rewireable, educational, multi-CPU, BASIC-programmable microcomputer with powerful, generic expansion capabilities! CERBERUS 2100™ is the successor of <a href="https://github.com/TheByteAttic/CERBERUS2080">CERBERUS 2080™</a>, which is now obsolete. Check out the project's <a href="https://www.thebyteattic.com/p/cerberus-2100.html">official homepage</a>.
 <br><br>
