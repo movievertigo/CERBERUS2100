@@ -677,7 +677,7 @@ void enter() {  /** Called when the user presses ENTER, unless a CPU program is 
     catLoad(nextWord, nextNextWord, false);
   /** RUN ***********************************************************************************/
   } else if (nextWord == F("run")) {      /** Runs the code in memory **/
-    for (i = 0; i < 38; i++) previousEditLine[i] = editLine[i]; /** Store edit line just executed **/
+    storePreviousLine();
     runCode();
   /** SAVE **********************************************************************************/
   } else if (nextWord == F("basic6502")) {
