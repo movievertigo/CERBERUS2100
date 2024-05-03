@@ -107,10 +107,10 @@ Pin 78 = FREE12;
 /*******************/
 
 Pinnode = [LPC3..0]; /** Token Line Passes Counter, 0 to 15 (4 bits) **/
-Pinnode = [TLC6..0]; /** Token Line Counter, 0 to 40 (6 bits) **/
-Pinnode = [FBA11..3]; /** Fall-back address to reset video memory addr counter **/
-                      /** Only multiples of 40 are relevant, so no need **/
-                      /** to use the 3 least significant bits **/
+Pinnode = [TLC6..0]; /** Token Line Counter, 0 to 80 (7 bits) **/
+Pinnode = [FBA11..4]; /** Fall-back address to reset video memory addr counter **/
+                      /** Only multiples of 80 are relevant, so no need **/
+                      /** to use the 4 least significant bits **/
 Pinnode = VMA11;
 
 
@@ -158,7 +158,7 @@ TLC0.t = 'b'1;
                (TLC6 & !TLC5 &
                 TLC4 & !TLC3 & !TLC2 & !TLC1 & !TLC0);
 /** The above resets token line counter when counter tries to **/
-/** address beyond highest token line position (address 40)   **/
+/** address beyond highest token line position (address 80)   **/
 
 
 /*********************************************************************/
@@ -170,7 +170,7 @@ LPC1.t = LPC0;
 LPC0.t = 'b'1;
 [LPC3..0].ck = CCLK;
 [LPC3..0].ar = CRST;
-[LPC3..0].ce =  TLC6 & !TLC5 & /** Only count after a token line scan is completed (39) **/
+[LPC3..0].ce =  TLC6 & !TLC5 & /** Only count after a token line scan is completed (79) **/
                !TLC4 & TLC3 & TLC2 & TLC1 & TLC0;
 /** Because this counts from 0 to 15, it 'resets' itself automatically after 16 passes **/
 
@@ -214,22 +214,21 @@ VMA4.t =  LD  & !FBA4  &  VMA4  #
           LD  &  FBA4  & !VMA4  #
          !LD  &  VMA3  &  VMA2  & VMA1 & VMA0;
 
-VMA3.t =  LD  & !FBA3  &  VMA3  #
-          LD  &  FBA3  & !VMA3  #
+VMA3.t =  LD  &  VMA3  # /** 4 least significant bits of FBA are always 0 (0, 80, 160, etc.) **/
          !LD  &  VMA2  &  VMA1  & VMA0;
 
-VMA2.t =  LD  &  VMA2 # /** 3 least significant bits of FBA are always 0 (0, 40, 80, etc.) **/
+VMA2.t =  LD  &  VMA2 # /** 4 least significant bits of FBA are always 0 (0, 80, 160, etc.) **/
          !LD  &  VMA1 & VMA0;
 
-VMA1.t =  LD  &  VMA1 # /** 3 least significant bits of FBA are always 0 (0, 40, 80, etc.) **/
+VMA1.t =  LD  &  VMA1 # /** 4 least significant bits of FBA are always 0 (0, 80, 160, etc.) **/
          !LD  &  VMA0;
 
-VMA0.t = !LD # /** 3 least significant bits of FBA are always 0 (0, 40, 80, etc.) **/
+VMA0.t = !LD # /** 4 least significant bits of FBA are always 0 (0, 80, 160, etc.) **/
           LD  &  VMA0;
 
 [VMA11..0].ck = CCLK;
 [VMA11..0].ar = CRST #
-               ( VMA11 & !VMA10 & !VMA9 & /** Asynchronous reset at the end of frame (1200) **/
+               ( VMA11 & !VMA10 & !VMA9 & /** Asynchronous reset at the end of frame (2400) **/
                  VMA8  & !VMA7 &  VMA6 &  VMA5 &
                 !VMA4  & !VMA3 & !VMA2 & !VMA1 & !VMA0);
 
@@ -245,8 +244,7 @@ FBA7.d =  VMA7;
 FBA6.d =  VMA6;
 FBA5.d =  VMA5;
 FBA4.d =  VMA4;
-FBA3.d =  VMA3;
-[FBA11..3].ck = CCLK;
-[FBA11..3].ce = !LPC3 & !LPC2 & !LPC1 & !LPC0 & /** Latches once per token line, at start of first pass **/
+[FBA11..4].ck = CCLK;
+[FBA11..4].ce = !LPC3 & !LPC2 & !LPC1 & !LPC0 & /** Latches once per token line, at start of first pass **/
                 !TLC6 & !TLC5 & !TLC4 & !TLC3 & !TLC2 & !TLC1 & !TLC0;
-[FBA11..3].ar = CRST;
+[FBA11..4].ar = CRST;

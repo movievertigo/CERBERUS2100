@@ -203,11 +203,8 @@ S1.t = S0;
 S0.t = 'b'1;
 [S3..0].ck = PCLK;
 [S3..0].ar = RST;
-[S3..0].ce = NB; /** This should only tic in frame, **/
-                                                            /** i.e. outside the blanking intervals **/
-CCLK = !S2 & !S1 & S0 & !PCLK; /** CAVIA's clock is 1/16th of pixel clock. **/
-                             /** This allows CAVIA to scan each of the 8 bytes in the character **/
-                             /** twice, so to fill the frame. **/
+[S3..0].ce = NB; /** This should only tic in frame, i.e. outside the blanking intervals **/
+CCLK = !S2 & !S1 & S0 & !PCLK; /** CAVIA's clock is 1/8th of pixel clock. **/
 
 
 /*************************************************/
@@ -345,7 +342,7 @@ VSP = !VSPD;                          /** Simply the inverse of the sync pulse d
 /**************************************************/
 /** Parallel-input, serial-output Shift Register **/
 /**************************************************/
-ShiftRegister.ck = PCLK & NB;                /** Taking this bit as clock halves PCLK frequency **/
+ShiftRegister.ck = PCLK & NB;
 ShiftRegister.d = (!S2 & !S1 & !S0) & CharByteMirrored # /** Loads in the new byte, flipped **/
                  !(!S2 & !S1 & !S0) & ShiftOneRight;     /** Otherwise shifts the contents **/
 ShiftRegister.ar = RST #
