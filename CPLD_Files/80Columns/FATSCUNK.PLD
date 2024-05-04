@@ -123,7 +123,7 @@ CA3.d = CCA3;
 CA2.d = CCA2;
 CA1.d = CCA1;
 CA0.d = CCA0;
-[CA7..0].ck = !S2 & !S1 & !S0 & PCLK; /** This is when a character byte is loaded into the shift register **/
+[CA7..0].ck = !S2 & !S1 & !S0 & !PCLK; /** This is when a character byte is loaded into the shift register **/
 [CA7..0].ar = RST;
 
 /** Now distribute the colors over different graphics characters **/
@@ -342,7 +342,7 @@ VSP = !VSPD;                          /** Simply the inverse of the sync pulse d
 /**************************************************/
 /** Parallel-input, serial-output Shift Register **/
 /**************************************************/
-ShiftRegister.ck = PCLK & NB;
+ShiftRegister.ck = !PCLK & NB;
 ShiftRegister.d = (!S2 & !S1 & !S0) & CharByteMirrored # /** Loads in the new byte, flipped **/
                  !(!S2 & !S1 & !S0) & ShiftOneRight;     /** Otherwise shifts the contents **/
 ShiftRegister.ar = RST #
