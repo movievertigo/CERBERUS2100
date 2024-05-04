@@ -108,10 +108,9 @@ Pin 78 = FREE12;
 
 Pinnode = [LPC3..0]; /** Token Line Passes Counter, 0 to 15 (4 bits) **/
 Pinnode = [TLC6..0]; /** Token Line Counter, 0 to 80 (7 bits) **/
-Pinnode = [FBA11..4]; /** Fall-back address to reset video memory addr counter **/
+Pinnode = [FBA10..4]; /** Fall-back address to reset video memory addr counter **/
                       /** Only multiples of 80 are relevant, so no need **/
                       /** to use the 4 least significant bits **/
-Pinnode = VMA11;
 
 
 /***********/
@@ -182,10 +181,6 @@ LD = TLC6 & !TLC5 & !TLC4 & TLC3 & TLC2 & TLC1 & TLC0 &
      !(LPC3 & LPC2 & LPC1 & LPC0);
 /** Above: LoaD fall-back address when final address of token line reached but need to scan it again **/
 
-VMA11.t = LD  & !FBA11 &  VMA11 #
-          LD  &  FBA11 & !VMA11 #
-         !LD  &  VMA10 &  VMA9  &  VMA8  & VMA7 & VMA6 & VMA5 & VMA4 & VMA3 & VMA2 & VMA1 & VMA0;
-
 VMA10.t = LD  & !FBA10 &  VMA10 #
           LD  &  FBA10 & !VMA10 #
          !LD  &  VMA9  &  VMA8  & VMA7 & VMA6 & VMA5 & VMA4 & VMA3 & VMA2 & VMA1 & VMA0;
@@ -226,17 +221,16 @@ VMA1.t =  LD  &  VMA1 # /** 4 least significant bits of FBA are always 0 (0, 80,
 VMA0.t = !LD # /** 4 least significant bits of FBA are always 0 (0, 80, 160, etc.) **/
           LD  &  VMA0;
 
-[VMA11..0].ck = CCLK;
-[VMA11..0].ar = CRST #
-               ( VMA11 & !VMA10 & !VMA9 & /** Asynchronous reset at the end of frame (2400) **/
-                 VMA8  & !VMA7 &  VMA6 &  VMA5 &
-                !VMA4  & !VMA3 & !VMA2 & !VMA1 & !VMA0);
+[VMA10..0].ck = CCLK;
+[VMA10..0].ar = CRST #
+               ( VMA10 & VMA9 & /** Asynchronous reset at the end of frame (2000) **/
+                 VMA8  & VMA7 &  VMA6 &  !VMA5 &
+                VMA4  & !VMA3 & !VMA2 & !VMA1 & !VMA0);
 
 
 /*********************************/
 /** Logic for fall-back address **/
 /*********************************/
-FBA11.d = VMA11;
 FBA10.d = VMA10;
 FBA9.d =  VMA9;
 FBA8.d =  VMA8;
@@ -244,7 +238,7 @@ FBA7.d =  VMA7;
 FBA6.d =  VMA6;
 FBA5.d =  VMA5;
 FBA4.d =  VMA4;
-[FBA11..4].ck = CCLK;
-[FBA11..4].ce = !LPC3 & !LPC2 & !LPC1 & !LPC0 & /** Latches once per token line, at start of first pass **/
+[FBA10..4].ck = CCLK;
+[FBA10..4].ce = !LPC3 & !LPC2 & !LPC1 & !LPC0 & /** Latches once per token line, at start of first pass **/
                 !TLC6 & !TLC5 & !TLC4 & !TLC3 & !TLC2 & !TLC1 & !TLC0;
-[FBA11..4].ar = CRST;
+[FBA10..4].ar = CRST;
