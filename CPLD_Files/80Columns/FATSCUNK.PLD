@@ -298,35 +298,35 @@ V0.t = 'b'1;
 /** Vertical Front porch detector **/
 /***********************************/
 VFPD.d = 'b'1;                        /** When latched, this 1 indicates we are in the front porch **/
-VFPD.ck = !V9 & V8 &                  /** Latch 1 at the end of the right margin (480) **/
-           V7 & V6 & V5 & !V4 &
+VFPD.ck = !V9 & V8 &                  /** Latch 1 at the end of the right margin (400) **/
+           V7 & !V6 & !V5 & V4 &
           !V3 & !V2 & !V1 & !V0;
 VFPD.ar = RST #
-          (!V9 & V8 &                 /** Reset at the end of the front porch (490) **/
-            V7 & V6 & V5 & !V4 &
-            V3 & !V2 & V1 & !V0);
+          (!V9 & V8 &                 /** Reset at the end of the front porch (450) **/
+            V7 & V6 & !V5 & !V4 &
+            !V3 & !V2 & V1 & !V0);
 
 
 /**********************************/
 /** Vertical Sync pulse detector **/
 /**********************************/
 VSPD.d = 'b'1;                        /** When latched, this 1 indicates we are in the sync pulse **/
-VSPD.ck = !V9 & V8 &                  /** Latch 1 at the end of the front porch (490) **/
-           V7 & V6 & V5 & !V4 &
-           V3 & !V2 & V1 & !V0;
+VSPD.ck = !V9 & V8 &                  /** Latch 1 at the end of the front porch (450) **/
+           V7 & V6 & !V5 & !V4 &
+           !V3 & !V2 & V1 & !V0;
 VSPD.ar = RST #
-          (!V9 & V8 &                 /** Reset at the end of the sync pulse (492) **/
-            V7 & V6 & V5 & !V4 &
-            V3 & V2 & !V1 & !V0);
+          (!V9 & V8 &                 /** Reset at the end of the sync pulse (452) **/
+            V7 & V6 & !V5 & !V4 &
+            !V3 & V2 & !V1 & !V0);
 
 
 /**********************************/
 /** Vertical Back Porch Detector **/
 /**********************************/
 VBPD.d = 'b'1;                        /** When latched, this 1 indicates we are in the back porch **/
-VBPD.ck = !V9 & V8 &                  /** Latch 1 at the end of the sync pulse (492) **/
-           V7 & V6 & V5 & !V4 &
-           V3 & V2 & !V1 & !V0;
+VBPD.ck = !V9 & V8 &                  /** Latch 1 at the end of the sync pulse (452) **/
+           V7 & V6 & !V5 & !V4 &
+           !V3 & V2 & !V1 & !V0;
 VBPD.ar = RST #
           ( V9 & !V8 &                /** Reset at the end of the line (525) **/
            !V7 & !V6 & !V5 & !V4 &
