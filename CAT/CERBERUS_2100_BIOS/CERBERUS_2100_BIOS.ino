@@ -1167,6 +1167,7 @@ void ccls() {
   	for (x = 0; x < 1200; x++) {
 	    cpoke(0xF800 + x, 32);        /** Video memory addresses start at 0XF800 **/
 	}
+    cpoke(0xFFF9, 0); // Select standard graphics mode
 }
 
 void cprintFrames() {
