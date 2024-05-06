@@ -57,7 +57,7 @@ Pin 100 = CCLK; /** CAVIA's clock: only ticks during frame, and then divided by 
 Pin 93  = DPMCE; /** Chip Enable for the Dual-Ported Memories **/
 Pin 81  = CRST; /** Reset for CAVIA, for synchronization of the counters in CAVIA and SCUNK **/
 
-Pin 49 = FREE1; /** Unused outputs routed to FAT CAVIA **/
+Pin 49 = FETCHMODE; /** was FREE1 **/
 Pin 48 = FREE2;
 Pin 47 = FREE3;
 
@@ -74,7 +74,7 @@ Pin 50 = CCA6; /** was FREE10 **/
 Pin 52 = CCA7; /** was FREE11 **/
 
 /** Free inputs/outputs from/to FAT CAVIA **/
-Pin 42 = FREE12;
+Pin 42 = COLS80; /** was FREE12 **/
 
 
 /** Buried states **/
@@ -96,6 +96,7 @@ Pinnode = [S3..0]; /** 4-bit counter to divide PCLK by 16 (8 bytes per character
 Pinnode = OUTBIT;  /** RGB output bit to the monitor **/
 Field ShiftRegister = [SR7..1, OUTBIT]; /** Economical way to refer to shift register as a whole **/
 Field ShiftOneRight = ['b'0, SR7..1]; /** Handy definition to implement a shift right **/
+Pinnode = FETCHMODEENABLE;
 
 
 /**********************************************************************************************/
@@ -110,6 +111,12 @@ BE = 'b'1;
 NB = !HFPD & !HSPD & !HBPD & !VFPD & !VSPD & !VBPD;
 
 
+/**********************************************************************************/
+/** Signal CAVIA to fetch the graphics mode value during the vertical sync pulse **/
+/**********************************************************************************/
+FETCHMODE = VSPD & HFPD;
+FETCHMODEENABLE = VSPD;
+
 /**********************************************************/
 /** Define pixel color based on output of shift register **/
 /**********************************************************/
@@ -123,7 +130,7 @@ CA3.d = CCA3;
 CA2.d = CCA2;
 CA1.d = CCA1;
 CA0.d = CCA0;
-[CA7..0].ck = !S3 & !S2 & !S1 & S0; /** This is when a character byte is loaded into the shift register **/
+[CA7..0].ck = !COLS80 & (!S3 & !S2 & !S1 & S0) # COLS80 & (!S2 & !S1 & !S0 & !PCLK); /** This is when a character byte is loaded into the shift register **/
 [CA7..0].ar = RST;
 
 /** Now distribute the colors over different graphics characters **/
@@ -178,9 +185,9 @@ BLUE  = (OUTBIT & !CA7 & !CA6 & !CA5 & !CA4 & !CA3) #                      /** w
 
 
 /****************************************************************************************/
-/** Enable the DP memories whenever NOT in a blanking interval, horizontal or vertical **/
+/** Enable the DP memories when NOT in a blanking interval, or in graphics mode fetch  **/
 /****************************************************************************************/
-DPMCE = !NB;  /** Chip Enable is active low **/
+DPMCE = !(NB # FETCHMODEENABLE);  /** Chip Enable is active low **/
 
 
 /***********************/
@@ -203,11 +210,11 @@ S1.t = S0;
 S0.t = 'b'1;
 [S3..0].ck = PCLK;
 [S3..0].ar = RST;
-[S3..0].ce = !HFPD & !HSPD & !HBPD & !VFPD & !VSPD & !VBPD; /** This should only tic in frame, **/
-                                                            /** i.e. outside the blanking intervals **/
-CCLK = !S3 & !S2 & S1 & !S0; /** CAVIA's clock is 1/16th of pixel clock. **/
-                             /** This allows CAVIA to scan each of the 8 bytes in the character **/
-                             /** twice, so to fill the frame. **/
+[S3..0].ce = NB; /** This should only tic in frame, i.e. outside the blanking intervals **/
+CCLK = !COLS80 &
+        (!S3 & !S2 & S1 & !S0) /** CAVIA's clock is 1/16th of pixel clock. **/
+        # COLS80 &
+        (!S2 & !S1 & S0 & !PCLK); /** CAVIA's clock is 1/8th of pixel clock. **/
 
 
 /*************************************************/
@@ -301,35 +308,62 @@ V0.t = 'b'1;
 /** Vertical Front porch detector **/
 /***********************************/
 VFPD.d = 'b'1;                        /** When latched, this 1 indicates we are in the front porch **/
-VFPD.ck = !V9 & V8 &                  /** Latch 1 at the end of the right margin (480) **/
+VFPD.ck = !COLS80 &
+          (!V9 & V8 &                  /** Latch 1 at the end of the right margin (480) **/
            V7 & V6 & V5 & !V4 &
-          !V3 & !V2 & !V1 & !V0;
-VFPD.ar = RST #
+          !V3 & !V2 & !V1 & !V0)
+          # COLS80 &
+          (!V9 & V8 &                  /** Latch 1 at the end of the right margin (400) **/
+           V7 & !V6 & !V5 & V4 &
+          !V3 & !V2 & !V1 & !V0);
+VFPD.ar = !COLS80 &
+          (RST #
           (!V9 & V8 &                 /** Reset at the end of the front porch (490) **/
             V7 & V6 & V5 & !V4 &
-            V3 & !V2 & V1 & !V0);
+            V3 & !V2 & V1 & !V0))
+            # COLS80 &
+          (RST #
+          (!V9 & V8 &                 /** Reset at the end of the front porch (450) **/
+            V7 & V6 & !V5 & !V4 &
+            !V3 & !V2 & V1 & !V0));
 
 
 /**********************************/
 /** Vertical Sync pulse detector **/
 /**********************************/
 VSPD.d = 'b'1;                        /** When latched, this 1 indicates we are in the sync pulse **/
-VSPD.ck = !V9 & V8 &                  /** Latch 1 at the end of the front porch (490) **/
+VSPD.ck = !COLS80 &
+          (!V9 & V8 &                  /** Latch 1 at the end of the front porch (490) **/
            V7 & V6 & V5 & !V4 &
-           V3 & !V2 & V1 & !V0;
-VSPD.ar = RST #
+           V3 & !V2 & V1 & !V0)
+           # COLS80 &
+           (!V9 & V8 &                  /** Latch 1 at the end of the front porch (450) **/
+           V7 & V6 & !V5 & !V4 &
+           !V3 & !V2 & V1 & !V0);
+VSPD.ar = !COLS80 &
+          (RST #
           (!V9 & V8 &                 /** Reset at the end of the sync pulse (492) **/
             V7 & V6 & V5 & !V4 &
-            V3 & V2 & !V1 & !V0);
+            V3 & V2 & !V1 & !V0))
+            # COLS80 &
+            (RST #
+          (!V9 & V8 &                 /** Reset at the end of the sync pulse (452) **/
+            V7 & V6 & !V5 & !V4 &
+            !V3 & V2 & !V1 & !V0));
 
 
 /**********************************/
 /** Vertical Back Porch Detector **/
 /**********************************/
 VBPD.d = 'b'1;                        /** When latched, this 1 indicates we are in the back porch **/
-VBPD.ck = !V9 & V8 &                  /** Latch 1 at the end of the sync pulse (492) **/
+VBPD.ck = !COLS80 &
+          (!V9 & V8 &                  /** Latch 1 at the end of the sync pulse (492) **/
            V7 & V6 & V5 & !V4 &
-           V3 & V2 & !V1 & !V0;
+           V3 & V2 & !V1 & !V0)
+           # COLS80 &
+           (!V9 & V8 &                  /** Latch 1 at the end of the sync pulse (452) **/
+           V7 & V6 & !V5 & !V4 &
+           !V3 & V2 & !V1 & !V0);
 VBPD.ar = RST #
           ( V9 & !V8 &                /** Reset at the end of the line (525) **/
            !V7 & !V6 & !V5 & !V4 &
@@ -345,9 +379,13 @@ VSP = !VSPD;                          /** Simply the inverse of the sync pulse d
 /**************************************************/
 /** Parallel-input, serial-output Shift Register **/
 /**************************************************/
-ShiftRegister.ck = S0;                /** Taking this bit as clock halves PCLK frequency **/
-ShiftRegister.d = (!S3 & !S2 & !S1) & CharByteMirrored # /** Loads in the new byte, flipped **/
-                 !(!S3 & !S2 & !S1) & ShiftOneRight;     /** Otherwise shifts the contents **/
+ShiftRegister.ck = !COLS80 & (S0) # COLS80 & (!PCLK & NB);
+ShiftRegister.d = !COLS80 & 
+                 ((!S3 & !S2 & !S1) & CharByteMirrored # /** Loads in the new byte, flipped **/
+                 !(!S3 & !S2 & !S1) & ShiftOneRight)
+                 # COLS80 &
+                 ((!S2 & !S1 & !S0) & CharByteMirrored # /** Loads in the new byte, flipped **/
+                 !(!S2 & !S1 & !S0) & ShiftOneRight);     /** Otherwise shifts the contents **/
 ShiftRegister.ar = RST #
                    ( H9 & !H8 &             /** Reset at the end of each frame line, **/
                      H7 & !H6 & !H5 & !H4 & /** so not to have a signal during the blanking interval **/
