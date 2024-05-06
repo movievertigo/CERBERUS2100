@@ -386,7 +386,4 @@ ShiftRegister.d = !COLS80 &
                  # COLS80 &
                  ((!S2 & !S1 & !S0) & CharByteMirrored # /** Loads in the new byte, flipped **/
                  !(!S2 & !S1 & !S0) & ShiftOneRight);     /** Otherwise shifts the contents **/
-ShiftRegister.ar = RST #
-                   ( H9 & !H8 &             /** Reset at the end of each frame line, **/
-                     H7 & !H6 & !H5 & !H4 & /** so not to have a signal during the blanking interval **/
-                    !H3 & !H2 & !H1 & !H0);
+ShiftRegister.ar = RST # HFPD # VFPD;

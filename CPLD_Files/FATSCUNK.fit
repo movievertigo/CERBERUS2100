@@ -1,4 +1,4 @@
-Atmel ATF1508AS Fitter Version 1.8.7.8 ,running Mon May 06 14:26:06 2024
+Atmel ATF1508AS Fitter Version 1.8.7.8 ,running Mon May 06 15:34:02 2024
 
 
 fit1508 FATSCUNK.tt2 -CUPL -dev P1508T100 -JTAG ON
@@ -77,101 +77,102 @@ Performing input pin pre-assignments ...
 ------------------------------------
 PCLK assigned to pin  87
 VBPD.C equation needs patching.
-VSPD.C equation needs patching.
-VFPD.C equation needs patching.
 VSPD.AR equation needs patching.
 VFPD.AR equation needs patching.
+VSPD.C equation needs patching.
+VFPD.C equation needs patching.
 HSPD.AR equation needs patching.
 HFPD.AR equation needs patching.
 7 control equtions need patching
 
 Attempt to place floating signals ...
 ------------------------------------
-Com_Ctrl_221 is placed at feedback node 601 (MC 1)
-S2 is placed at feedback node 602 (MC 2)
-Com_Ctrl_220 is placed at feedback node 603 (MC 3)
-SR7 is placed at feedback node 604 (MC 4)
+Com_Ctrl_220 is placed at feedback node 601 (MC 1)
+SR3 is placed at feedback node 602 (MC 2)
+S0 is placed at feedback node 603 (MC 3)
+SR2 is placed at feedback node 604 (MC 4)
 CCLK is placed at pin 100 (MC 5)
 S1 is placed at feedback node 606 (MC 6)
-XXL_229 is placed at feedback node 607 (MC 7)
+SR4 is placed at feedback node 607 (MC 7)
 HSP is placed at pin 98 (MC 8)
 VSP is placed at pin 97 (MC 9)
-XXL_228 is placed at feedback node 610 (MC 10)
+SR1 is placed at feedback node 610 (MC 10)
 BE is placed at pin 96 (MC 11)
-XXL_226 is placed at feedback node 612 (MC 12)
-S0 is placed at feedback node 613 (MC 13)
+SR7 is placed at feedback node 612 (MC 12)
+S3 is placed at feedback node 613 (MC 13)
 DPMCE is placed at pin 93 (MC 14)
-XXL_227 is placed at feedback node 615 (MC 15)
-S3 is placed at feedback node 616 (MC 16)
-VBPD.C is placed at feedback node 617 (MC 17)
-V3 is placed at feedback node 618 (MC 18)
-VSPD.C is placed at feedback node 619 (MC 19)
-V4 is placed at feedback node 620 (MC 20)
-VFPD.C is placed at feedback node 621 (MC 21)
-HBPD is placed at feedback node 622 (MC 22)
-V5 is placed at feedback node 623 (MC 23)
-HFPD is placed at feedback node 624 (MC 24)
-V1 is placed at feedback node 625 (MC 25)
-V6 is placed at feedback node 626 (MC 26)
-VSPD.AR is placed at feedback node 627 (MC 27)
-V7 is placed at feedback node 628 (MC 28)
-VFPD.AR is placed at feedback node 629 (MC 29)
-V2 is placed at feedback node 630 (MC 30)
-V8 is placed at feedback node 631 (MC 31)
+OUTBIT is placed at feedback node 615 (MC 15)
+S2 is placed at feedback node 616 (MC 16)
+Com_Ctrl_223 is placed at foldback expander node 316 (MC 16)
+VBPD.C is placed at feedback node 618 (MC 18)
+VSPD.AR is placed at feedback node 620 (MC 20)
+VFPD.AR is placed at feedback node 623 (MC 23)
+SR5 is placed at feedback node 626 (MC 26)
+Com_Ctrl_222 is placed at feedback node 627 (MC 27)
+SR6 is placed at feedback node 628 (MC 28)
+VSPD.C is placed at feedback node 629 (MC 29)
+VFPD.C is placed at feedback node 630 (MC 30)
+Com_Ctrl_223 is placed at foldback expander node 330 (MC 30)
+XXL_232 is placed at feedback node 631 (MC 31)
 TDI is placed at pin 4 (MC 32)
-V9 is placed at feedback node 632 (MC 32)
+XXL_231 is placed at feedback node 632 (MC 32)
 CB0 is placed at pin 25 (MC 33)
-H2 is placed at feedback node 633 (MC 33)
-H3 is placed at feedback node 634 (MC 34)
+Com_Ctrl_224 is placed at feedback node 633 (MC 33)
+HSPD.AR is placed at feedback node 634 (MC 34)
 CB1 is placed at pin 24 (MC 35)
-H4 is placed at feedback node 635 (MC 35)
-H5 is placed at feedback node 636 (MC 36)
+HFPD.AR is placed at feedback node 635 (MC 35)
+HSPD is placed at feedback node 636 (MC 36)
 CB2 is placed at pin 23 (MC 37)
-H6 is placed at feedback node 637 (MC 37)
+HFPD is placed at feedback node 637 (MC 37)
 CB3 is placed at pin 22 (MC 38)
-H7 is placed at feedback node 638 (MC 38)
-H8 is placed at feedback node 639 (MC 39)
+HBPD is placed at feedback node 638 (MC 38)
+V1 is placed at feedback node 639 (MC 39)
 CB4 is placed at pin 21 (MC 40)
-Com_Ctrl_224 is placed at feedback node 640 (MC 40)
+V3 is placed at feedback node 640 (MC 40)
 CB5 is placed at pin 20 (MC 41)
-H9 is placed at feedback node 641 (MC 41)
-Com_Ctrl_223 is placed at feedback node 642 (MC 42)
+V2 is placed at feedback node 641 (MC 41)
+V4 is placed at feedback node 642 (MC 42)
 CB6 is placed at pin 19 (MC 43)
-Com_Ctrl_222 is placed at feedback node 643 (MC 43)
-HSPD.AR is placed at feedback node 644 (MC 44)
+V6 is placed at feedback node 643 (MC 43)
+V5 is placed at feedback node 644 (MC 44)
 CB7 is placed at pin 17 (MC 45)
-HFPD.AR is placed at feedback node 645 (MC 45)
-H1 is placed at feedback node 646 (MC 46)
-V0 is placed at feedback node 647 (MC 47)
+V7 is placed at feedback node 645 (MC 45)
+H9 is placed at feedback node 646 (MC 46)
+V9 is placed at feedback node 647 (MC 47)
 TMS is placed at pin 15 (MC 48)
-HSPD is placed at feedback node 648 (MC 48)
-XXL_232 is placed at feedback node 650 (MC 50)
-XXL_231 is placed at feedback node 652 (MC 52)
-XXL_230 is placed at feedback node 655 (MC 55)
+V8 is placed at feedback node 648 (MC 48)
+CA2 is placed at feedback node 650 (MC 50)
+H0 is placed at feedback node 651 (MC 51)
+CA0 is placed at feedback node 652 (MC 52)
+H2 is placed at feedback node 653 (MC 53)
+H1 is placed at feedback node 654 (MC 54)
+V0 is placed at feedback node 655 (MC 55)
+H3 is placed at feedback node 656 (MC 56)
+H4 is placed at feedback node 657 (MC 57)
 XXL_233 is placed at feedback node 658 (MC 58)
+H5 is placed at feedback node 659 (MC 59)
 XXL_225 is placed at feedback node 660 (MC 60)
-SR4 is placed at feedback node 662 (MC 62)
+H6 is placed at feedback node 661 (MC 61)
+H7 is placed at feedback node 662 (MC 62)
 XXL_234 is placed at feedback node 663 (MC 63)
-SR1 is placed at feedback node 664 (MC 64)
-CA5 is placed at feedback node 666 (MC 66)
-CA4 is placed at feedback node 668 (MC 68)
+H8 is placed at feedback node 664 (MC 64)
+CA3 is placed at feedback node 666 (MC 66)
+CA6 is placed at feedback node 668 (MC 68)
 COLS80 is placed at pin 42 (MC 69)
-CA1 is placed at feedback node 669 (MC 69)
-CA2 is placed at feedback node 671 (MC 71)
+CA5 is placed at feedback node 669 (MC 69)
+CA1 is placed at feedback node 671 (MC 71)
 CCA1 is placed at pin 45 (MC 72)
-CA0 is placed at feedback node 672 (MC 72)
+CA4 is placed at feedback node 672 (MC 72)
 CCA0 is placed at pin 46 (MC 73)
-SR5 is placed at feedback node 673 (MC 73)
-SR6 is placed at feedback node 674 (MC 74)
-CA6 is placed at feedback node 675 (MC 75)
-SR3 is placed at feedback node 676 (MC 76)
-CA3 is placed at feedback node 677 (MC 77)
+XXL_230 is placed at feedback node 673 (MC 73)
+XXL_229 is placed at feedback node 674 (MC 74)
+XXL_227 is placed at feedback node 676 (MC 76)
+Com_Ctrl_221 is placed at feedback node 677 (MC 77)
 FETCHMODE is placed at pin 49 (MC 78)
-OUTBIT is placed at feedback node 679 (MC 79)
+XXL_226 is placed at feedback node 679 (MC 79)
 CCA6 is placed at pin 50 (MC 80)
-SR2 is placed at feedback node 680 (MC 80)
+XXL_228 is placed at feedback node 680 (MC 80)
 CCA7 is placed at pin 52 (MC 81)
-H0 is placed at feedback node 687 (MC 87)
 VSPD is placed at feedback node 690 (MC 90)
 VFPD is placed at feedback node 692 (MC 92)
 VBPD is placed at feedback node 695 (MC 95)
@@ -250,240 +251,243 @@ NC = Unused I/O pins which must be unconnected on the board
 
 Universal-Interconnect-Multiplexer assignments
 ------------------------------------------------
-FanIn assignment for block A [24]
+FanIn assignment for block A [25]
 {
-Com_Ctrl_220,CB0,CB6,COLS80,Com_Ctrl_223,CB5,CB7,CB4,
+Com_Ctrl_220,COLS80,CB0,
 HSPD,HFPD,HBPD,
 PCLK,
 RST,
-SR4,SR1,S0,S1,S3,SR3,SR2,S2,
-VFPD,VSPD,VBPD,
+S0,S2,SR2,SR5,SR1,SR3,S3,SR4,S1,
+VBPD,VFPD,VSPD,
+XXL_230,XXL_229,XXL_227,XXL_228,XXL_226,
 }
 Multiplexer assignment for block A
-Com_Ctrl_220		(MC2	FB)  : MUX 0		Ref (A3fb)
-SR4			(MC10	FB)  : MUX 1		Ref (D62fb)
-HSPD			(MC9	FB)  : MUX 3		Ref (C48fb)
-CB0			(MC24	P)   : MUX 5		Ref (C33p)
-SR1			(MC11	FB)  : MUX 7		Ref (D64fb)
-RST			(MC17	P)   : MUX 9		Ref (H115p)
-CB6			(MC20	P)   : MUX 10		Ref (C43p)
-COLS80			(MC18	P)   : MUX 11		Ref (E69p)
-HFPD			(MC7	FB)  : MUX 12		Ref (B24fb)
-S0			(MC4	FB)  : MUX 13		Ref (A13fb)
-S1			(MC3	FB)  : MUX 14		Ref (A6fb)
-Com_Ctrl_223		(MC8	FB)  : MUX 15		Ref (C42fb)
-CB5			(MC22	P)   : MUX 16		Ref (C41p)
-VFPD			(MC15	FB)  : MUX 17		Ref (F92fb)
-CB7			(MC21	P)   : MUX 18		Ref (C45p)
-S3			(MC5	FB)  : MUX 19		Ref (A16fb)
-SR3			(MC12	FB)  : MUX 25		Ref (E76fb)
-HBPD			(MC6	FB)  : MUX 26		Ref (B22fb)
-CB4			(MC23	P)   : MUX 29		Ref (C40p)
-SR2			(MC13	FB)  : MUX 31		Ref (E80fb)
-VSPD			(MC14	FB)  : MUX 33		Ref (F90fb)
-PCLK			(MC19	FB)  : MUX 35		Ref (GCLK)
-VBPD			(MC16	FB)  : MUX 37		Ref (F95fb)
-S2			(MC1	FB)  : MUX 38		Ref (A2fb)
+S0			(MC3	FB)  : MUX 0		Ref (A3fb)
+S2			(MC9	FB)  : MUX 1		Ref (A16fb)
+SR2			(MC4	FB)  : MUX 2		Ref (A4fb)
+SR5			(MC10	FB)  : MUX 3		Ref (B26fb)
+Com_Ctrl_220		(MC1	FB)  : MUX 4		Ref (A1fb)
+XXL_230			(MC14	FB)  : MUX 5		Ref (E73fb)
+SR1			(MC7	FB)  : MUX 7		Ref (A10fb)
+HSPD			(MC11	FB)  : MUX 8		Ref (C36fb)
+RST			(MC22	P)   : MUX 9		Ref (H115p)
+SR3			(MC2	FB)  : MUX 10		Ref (A2fb)
+COLS80			(MC23	P)   : MUX 11		Ref (E69p)
+S3			(MC8	FB)  : MUX 13		Ref (A13fb)
+XXL_229			(MC15	FB)  : MUX 15		Ref (E74fb)
+HFPD			(MC12	FB)  : MUX 16		Ref (C37fb)
+CB0			(MC25	P)   : MUX 21		Ref (C33p)
+SR4			(MC6	FB)  : MUX 22		Ref (A7fb)
+XXL_227			(MC16	FB)  : MUX 25		Ref (E76fb)
+HBPD			(MC13	FB)  : MUX 26		Ref (C38fb)
+XXL_228			(MC18	FB)  : MUX 27		Ref (E80fb)
+VBPD			(MC21	FB)  : MUX 29		Ref (F95fb)
+VFPD			(MC20	FB)  : MUX 31		Ref (F92fb)
+XXL_226			(MC17	FB)  : MUX 33		Ref (E79fb)
+S1			(MC5	FB)  : MUX 34		Ref (A6fb)
+VSPD			(MC19	FB)  : MUX 37		Ref (F90fb)
+PCLK			(MC24	FB)  : MUX 39		Ref (GCLK)
 
 FanIn assignment for block B [25]
 {
-COLS80,Com_Ctrl_222,Com_Ctrl_224,
-HFPD.AR,H4,H2,H5,H9,H6,H7,H3,H0,H8,H1,
+Com_Ctrl_220,COLS80,CB2,CB1,
+HFPD,
 RST,
-V3,V8,V4,V9,V5,V6,V1,V0,V7,V2,
+S2,S0,SR7,S1,S3,SR6,
+V3,V7,V5,V6,V0,V4,VFPD,V2,V8,V9,V1,
+XXL_231,XXL_232,
 }
 Multiplexer assignment for block B
-V3			(MC1	FB)  : MUX 0		Ref (B18fb)
-HFPD.AR			(MC20	FB)  : MUX 1		Ref (C45fb)
-H4			(MC12	FB)  : MUX 2		Ref (C35fb)
-V8			(MC8	FB)  : MUX 3		Ref (B31fb)
-V4			(MC2	FB)  : MUX 4		Ref (B20fb)
-H2			(MC10	FB)  : MUX 6		Ref (C33fb)
-V9			(MC9	FB)  : MUX 7		Ref (B32fb)
-RST			(MC24	P)   : MUX 9		Ref (H115p)
-COLS80			(MC25	P)   : MUX 11		Ref (E69p)
-V5			(MC3	FB)  : MUX 14		Ref (B23fb)
-Com_Ctrl_222		(MC19	FB)  : MUX 17		Ref (C43fb)
-H5			(MC13	FB)  : MUX 18		Ref (C36fb)
-Com_Ctrl_224		(MC17	FB)  : MUX 20		Ref (C40fb)
-H9			(MC18	FB)  : MUX 21		Ref (C41fb)
-H6			(MC14	FB)  : MUX 22		Ref (C37fb)
-V6			(MC5	FB)  : MUX 23		Ref (B26fb)
-H7			(MC15	FB)  : MUX 24		Ref (C38fb)
-V1			(MC4	FB)  : MUX 25		Ref (B25fb)
-H3			(MC11	FB)  : MUX 28		Ref (C34fb)
-V0			(MC22	FB)  : MUX 29		Ref (C47fb)
-V7			(MC6	FB)  : MUX 31		Ref (B28fb)
-H0			(MC23	FB)  : MUX 32		Ref (F87fb)
-H8			(MC16	FB)  : MUX 34		Ref (C39fb)
-V2			(MC7	FB)  : MUX 37		Ref (B30fb)
-H1			(MC21	FB)  : MUX 39		Ref (C46fb)
+V3			(MC12	FB)  : MUX 0		Ref (C40fb)
+V7			(MC17	FB)  : MUX 1		Ref (C45fb)
+Com_Ctrl_220		(MC1	FB)  : MUX 2		Ref (A1fb)
+S2			(MC6	FB)  : MUX 3		Ref (A16fb)
+V5			(MC16	FB)  : MUX 5		Ref (C44fb)
+XXL_231			(MC9	FB)  : MUX 7		Ref (B32fb)
+HFPD			(MC10	FB)  : MUX 8		Ref (C37fb)
+RST			(MC22	P)   : MUX 9		Ref (H115p)
+COLS80			(MC23	P)   : MUX 11		Ref (E69p)
+V6			(MC15	FB)  : MUX 13		Ref (C43fb)
+V0			(MC20	FB)  : MUX 14		Ref (D55fb)
+V4			(MC14	FB)  : MUX 15		Ref (C42fb)
+VFPD			(MC21	FB)  : MUX 17		Ref (F92fb)
+S0			(MC2	FB)  : MUX 18		Ref (A3fb)
+SR7			(MC4	FB)  : MUX 19		Ref (A12fb)
+CB2			(MC24	P)   : MUX 21		Ref (C37p)
+CB1			(MC25	P)   : MUX 23		Ref (C35p)
+V2			(MC13	FB)  : MUX 25		Ref (C41fb)
+S1			(MC3	FB)  : MUX 26		Ref (A6fb)
+V8			(MC19	FB)  : MUX 27		Ref (C48fb)
+V9			(MC18	FB)  : MUX 29		Ref (C47fb)
+XXL_232			(MC8	FB)  : MUX 31		Ref (B31fb)
+S3			(MC5	FB)  : MUX 33		Ref (A13fb)
+V1			(MC11	FB)  : MUX 36		Ref (C39fb)
+SR6			(MC7	FB)  : MUX 37		Ref (B28fb)
 
 FanIn assignment for block C [24]
 {
-Com_Ctrl_222,Com_Ctrl_224,
-H9,H4,H2,H1,H5,H6,H7,H3,HSPD.AR,H0,H8,
+Com_Ctrl_224,Com_Ctrl_222,
+H1,H0,H4,H9,H2,H3,H5,HFPD.AR,H8,H6,HFPD.AR,H7,
 RST,
-V3,V8,V4,V2,V7,V9,V5,V0,V6,V1,
+V7,V8,V3,V4,V0,V2,V5,V6,V1,
 }
 Multiplexer assignment for block C
-V3			(MC1	FB)  : MUX 0		Ref (B18fb)
-H9			(MC18	FB)  : MUX 1		Ref (C41fb)
-H4			(MC12	FB)  : MUX 2		Ref (C35fb)
-V8			(MC8	FB)  : MUX 3		Ref (B31fb)
-V4			(MC2	FB)  : MUX 4		Ref (B20fb)
-V2			(MC7	FB)  : MUX 5		Ref (B30fb)
-H2			(MC10	FB)  : MUX 6		Ref (C33fb)
-H1			(MC21	FB)  : MUX 7		Ref (C46fb)
-V7			(MC6	FB)  : MUX 9		Ref (B28fb)
-V9			(MC9	FB)  : MUX 11		Ref (B32fb)
-V5			(MC3	FB)  : MUX 14		Ref (B23fb)
-V0			(MC22	FB)  : MUX 15		Ref (C47fb)
-Com_Ctrl_222		(MC19	FB)  : MUX 17		Ref (C43fb)
-H5			(MC13	FB)  : MUX 18		Ref (C36fb)
-Com_Ctrl_224		(MC17	FB)  : MUX 20		Ref (C40fb)
-V6			(MC5	FB)  : MUX 21		Ref (B26fb)
-H6			(MC14	FB)  : MUX 22		Ref (C37fb)
-RST			(MC24	P)   : MUX 23		Ref (H115p)
-H7			(MC15	FB)  : MUX 24		Ref (C38fb)
-H3			(MC11	FB)  : MUX 28		Ref (C34fb)
-HSPD.AR			(MC20	FB)  : MUX 29		Ref (C44fb)
-H0			(MC23	FB)  : MUX 32		Ref (F87fb)
-H8			(MC16	FB)  : MUX 34		Ref (C39fb)
-V1			(MC4	FB)  : MUX 37		Ref (B25fb)
+V7			(MC11	FB)  : MUX 1		Ref (C45fb)
+H1			(MC16	FB)  : MUX 2		Ref (D54fb)
+V8			(MC13	FB)  : MUX 3		Ref (C48fb)
+H0			(MC14	FB)  : MUX 4		Ref (D51fb)
+H4			(MC19	FB)  : MUX 5		Ref (D57fb)
+V3			(MC6	FB)  : MUX 6		Ref (C40fb)
+H9			(MC12	FB)  : MUX 7		Ref (C46fb)
+RST			(MC24	P)   : MUX 9		Ref (H115p)
+H2			(MC15	FB)  : MUX 10		Ref (D53fb)
+V4			(MC8	FB)  : MUX 11		Ref (C42fb)
+V0			(MC17	FB)  : MUX 14		Ref (D55fb)
+V2			(MC7	FB)  : MUX 15		Ref (C41fb)
+H3			(MC18	FB)  : MUX 18		Ref (D56fb)
+H5			(MC20	FB)  : MUX 21		Ref (D59fb)
+HSPD.AR			(MC3	FB)  : MUX 22		Ref (C34fb)
+H8			(MC23	FB)  : MUX 23		Ref (D64fb)
+Com_Ctrl_224		(MC2	FB)  : MUX 24		Ref (C33fb)
+H6			(MC21	FB)  : MUX 25		Ref (D61fb)
+V5			(MC10	FB)  : MUX 29		Ref (C44fb)
+Com_Ctrl_222		(MC1	FB)  : MUX 33		Ref (B27fb)
+HFPD.AR			(MC4	FB)  : MUX 34		Ref (C35fb)
+V6			(MC9	FB)  : MUX 35		Ref (C43fb)
+V1			(MC5	FB)  : MUX 36		Ref (C39fb)
+H7			(MC22	FB)  : MUX 39		Ref (D62fb)
 
 FanIn assignment for block D [25]
 {
-CA2,CA4,CB2,CB3,COLS80,Com_Ctrl_223,CB1,CA5,CA3,CA0,CA6,CA7,Com_Ctrl_220,CA1,
+CCA0,CA0,Com_Ctrl_221,CCA2,CA3,CA7,CA2,CA1,CA4,Com_Ctrl_222,Com_Ctrl_224,CA6,CA5,
+H3,H2,H9,H8,H6,H5,H1,H7,H0,H4,
 OUTBIT,
-S3,SR5,S2,S0,SR6,SR7,SR2,S1,
-XXL_230,XXL_227,
+RST,
 }
 Multiplexer assignment for block D
-CA2			(MC13	FB)  : MUX 0		Ref (E71fb)
-S3			(MC7	FB)  : MUX 1		Ref (A16fb)
-CA4			(MC11	FB)  : MUX 2		Ref (E68fb)
-CB2			(MC24	P)   : MUX 3		Ref (C37p)
-SR5			(MC15	FB)  : MUX 5		Ref (E73fb)
-CB3			(MC23	P)   : MUX 7		Ref (C38p)
-COLS80			(MC22	P)   : MUX 9		Ref (E69p)
-S2			(MC1	FB)  : MUX 10		Ref (A2fb)
-Com_Ctrl_223		(MC8	FB)  : MUX 11		Ref (C42fb)
-S0			(MC5	FB)  : MUX 13		Ref (A13fb)
-CB1			(MC25	P)   : MUX 15		Ref (C35p)
-XXL_230			(MC9	FB)  : MUX 16		Ref (D55fb)
-SR6			(MC16	FB)  : MUX 17		Ref (E74fb)
-CA5			(MC10	FB)  : MUX 18		Ref (E66fb)
-OUTBIT			(MC19	FB)  : MUX 19		Ref (E79fb)
-SR7			(MC3	FB)  : MUX 20		Ref (A4fb)
-CA3			(MC18	FB)  : MUX 21		Ref (E77fb)
-CA0			(MC14	FB)  : MUX 22		Ref (E72fb)
-SR2			(MC20	FB)  : MUX 27		Ref (E80fb)
-CA6			(MC17	FB)  : MUX 31		Ref (E75fb)
-CA7			(MC21	FB)  : MUX 33		Ref (F96fb)
-S1			(MC4	FB)  : MUX 34		Ref (A6fb)
-Com_Ctrl_220		(MC2	FB)  : MUX 36		Ref (A3fb)
-XXL_227			(MC6	FB)  : MUX 37		Ref (A15fb)
-CA1			(MC12	FB)  : MUX 38		Ref (E69fb)
+CCA0			(MC24	P)   : MUX 0		Ref (E73p)
+CA0			(MC7	FB)  : MUX 2		Ref (D52fb)
+Com_Ctrl_221		(MC21	FB)  : MUX 3		Ref (E77fb)
+H3			(MC10	FB)  : MUX 4		Ref (D56fb)
+OUTBIT			(MC1	FB)  : MUX 5		Ref (A15fb)
+H2			(MC8	FB)  : MUX 6		Ref (D53fb)
+H9			(MC4	FB)  : MUX 7		Ref (C46fb)
+H8			(MC15	FB)  : MUX 9		Ref (D64fb)
+H6			(MC13	FB)  : MUX 11		Ref (D61fb)
+CCA2			(MC25	P)   : MUX 12		Ref (G107p)
+CA3			(MC16	FB)  : MUX 14		Ref (E66fb)
+CA7			(MC22	FB)  : MUX 15		Ref (F96fb)
+CA2			(MC5	FB)  : MUX 16		Ref (D50fb)
+H5			(MC12	FB)  : MUX 17		Ref (D59fb)
+CA1			(MC19	FB)  : MUX 18		Ref (E71fb)
+H1			(MC9	FB)  : MUX 20		Ref (D54fb)
+H7			(MC14	FB)  : MUX 21		Ref (D62fb)
+CA4			(MC20	FB)  : MUX 22		Ref (E72fb)
+Com_Ctrl_222		(MC2	FB)  : MUX 23		Ref (B27fb)
+RST			(MC23	P)   : MUX 27		Ref (H115p)
+H0			(MC6	FB)  : MUX 30		Ref (D51fb)
+Com_Ctrl_224		(MC3	FB)  : MUX 32		Ref (C33fb)
+CA6			(MC17	FB)  : MUX 36		Ref (E68fb)
+H4			(MC11	FB)  : MUX 37		Ref (D57fb)
+CA5			(MC18	FB)  : MUX 38		Ref (E69fb)
 
 FanIn assignment for block E [25]
 {
-CCA0,CCA5,CCA3,CCA6,CCA2,COLS80,Com_Ctrl_223,Com_Ctrl_221,CCA1,CCA4,Com_Ctrl_220,
+CB5,CCA5,CCA1,CB6,CCA6,CCA3,Com_Ctrl_221,CB4,CCA4,COLS80,CB7,CB3,
 HFPD,
+PCLK,
 RST,
-S3,SR1,SR6,SR4,SR3,SR7,
+SR4,S2,S0,S1,S3,SR3,SR5,SR1,SR2,
 VSPD,
-XXL_229,XXL_232,XXL_228,XXL_231,XXL_226,
 }
 Multiplexer assignment for block E
-CCA0			(MC19	P)   : MUX 0		Ref (E73p)
-CCA5			(MC23	P)   : MUX 1		Ref (G99p)
-CCA3			(MC24	P)   : MUX 2		Ref (G105p)
-S3			(MC7	FB)  : MUX 3		Ref (A16fb)
-CCA6			(MC25	P)   : MUX 4		Ref (E80p)
-CCA2			(MC20	P)   : MUX 6		Ref (G107p)
-SR1			(MC13	FB)  : MUX 7		Ref (D64fb)
-XXL_229			(MC4	FB)  : MUX 8		Ref (A7fb)
-RST			(MC17	P)   : MUX 9		Ref (H115p)
-XXL_232			(MC10	FB)  : MUX 10		Ref (D50fb)
-COLS80			(MC18	P)   : MUX 11		Ref (E69p)
-HFPD			(MC8	FB)  : MUX 12		Ref (B24fb)
-XXL_228			(MC5	FB)  : MUX 13		Ref (A10fb)
-Com_Ctrl_223		(MC9	FB)  : MUX 15		Ref (C42fb)
-SR6			(MC14	FB)  : MUX 17		Ref (E74fb)
-XXL_231			(MC11	FB)  : MUX 18		Ref (D52fb)
-SR4			(MC12	FB)  : MUX 21		Ref (D62fb)
-SR3			(MC15	FB)  : MUX 25		Ref (E76fb)
-Com_Ctrl_221		(MC1	FB)  : MUX 26		Ref (A1fb)
-CCA1			(MC21	P)   : MUX 29		Ref (E72p)
-CCA4			(MC22	P)   : MUX 31		Ref (G104p)
-VSPD			(MC16	FB)  : MUX 35		Ref (F90fb)
-Com_Ctrl_220		(MC2	FB)  : MUX 36		Ref (A3fb)
-XXL_226			(MC6	FB)  : MUX 37		Ref (A12fb)
-SR7			(MC3	FB)  : MUX 38		Ref (A4fb)
+SR4			(MC5	FB)  : MUX 0		Ref (A7fb)
+S2			(MC8	FB)  : MUX 1		Ref (A16fb)
+CB5			(MC16	P)   : MUX 2		Ref (C41p)
+CCA5			(MC23	P)   : MUX 5		Ref (G99p)
+S0			(MC2	FB)  : MUX 6		Ref (A3fb)
+CCA1			(MC22	P)   : MUX 7		Ref (E72p)
+RST			(MC13	P)   : MUX 9		Ref (H115p)
+CB6			(MC18	P)   : MUX 10		Ref (C43p)
+S1			(MC4	FB)  : MUX 12		Ref (A6fb)
+S3			(MC7	FB)  : MUX 13		Ref (A13fb)
+CCA6			(MC24	P)   : MUX 14		Ref (E80p)
+VSPD			(MC12	FB)  : MUX 15		Ref (F90fb)
+SR3			(MC1	FB)  : MUX 16		Ref (A2fb)
+SR5			(MC9	FB)  : MUX 23		Ref (B26fb)
+CCA3			(MC25	P)   : MUX 24		Ref (G105p)
+Com_Ctrl_221		(MC11	FB)  : MUX 25		Ref (E77fb)
+SR1			(MC6	FB)  : MUX 27		Ref (A10fb)
+CB4			(MC19	P)   : MUX 29		Ref (C40p)
+CCA4			(MC21	P)   : MUX 31		Ref (G104p)
+COLS80			(MC14	P)   : MUX 33		Ref (E69p)
+CB7			(MC17	P)   : MUX 34		Ref (C45p)
+CB3			(MC20	P)   : MUX 35		Ref (C38p)
+HFPD			(MC10	FB)  : MUX 36		Ref (C37fb)
+SR2			(MC3	FB)  : MUX 38		Ref (A4fb)
+PCLK			(MC15	FB)  : MUX 39		Ref (GCLK)
 
-FanIn assignment for block F [10]
+FanIn assignment for block F [9]
 {
-Com_Ctrl_224,Com_Ctrl_221,CCA7,Com_Ctrl_222,
+Com_Ctrl_222,Com_Ctrl_221,CCA7,
 RST,
-VBPD.C,VBPD.C,VBPD.C,VBPD.C,VBPD.C,
+VSPD.C,VSPD.C,VSPD.C,VSPD.C,VSPD.C,
 }
 Multiplexer assignment for block F
-Com_Ctrl_224		(MC7	FB)  : MUX 0		Ref (C40fb)
-Com_Ctrl_221		(MC1	FB)  : MUX 2		Ref (A1fb)
-VSPD.AR			(MC5	FB)  : MUX 5		Ref (B27fb)
-VFPD.C			(MC4	FB)  : MUX 10		Ref (B21fb)
-VFPD.AR			(MC6	FB)  : MUX 15		Ref (B29fb)
-VSPD.C			(MC3	FB)  : MUX 22		Ref (B19fb)
-RST			(MC9	P)   : MUX 23		Ref (H115p)
-VBPD.C			(MC2	FB)  : MUX 26		Ref (B17fb)
-CCA7			(MC10	P)   : MUX 33		Ref (F81p)
-Com_Ctrl_222		(MC8	FB)  : MUX 35		Ref (C43fb)
+VFPD.AR			(MC3	FB)  : MUX 0		Ref (B23fb)
+VSPD.AR			(MC2	FB)  : MUX 2		Ref (B20fb)
+VFPD.C			(MC6	FB)  : MUX 5		Ref (B30fb)
+VBPD.C			(MC1	FB)  : MUX 6		Ref (B18fb)
+Com_Ctrl_222		(MC4	FB)  : MUX 15		Ref (B27fb)
+Com_Ctrl_221		(MC7	FB)  : MUX 19		Ref (E77fb)
+RST			(MC8	P)   : MUX 23		Ref (H115p)
+CCA7			(MC9	P)   : MUX 33		Ref (F81p)
+VSPD.C			(MC5	FB)  : MUX 35		Ref (B29fb)
 
 FanIn assignment for block G [12]
 {
-CA3,CA4,CA6,CA0,CA1,CA5,CA2,CA7,
+CA0,CA4,CA7,CA1,CA2,CA3,CA5,CA6,
 OUTBIT,
-XXL_225,XXL_234,XXL_233,
+XXL_233,XXL_234,XXL_225,
 }
 Multiplexer assignment for block G
-CA3			(MC10	FB)  : MUX 1		Ref (E77fb)
-CA4			(MC5	FB)  : MUX 2		Ref (E68fb)
-CA6			(MC9	FB)  : MUX 3		Ref (E75fb)
-CA0			(MC8	FB)  : MUX 4		Ref (E72fb)
-CA1			(MC6	FB)  : MUX 8		Ref (E69fb)
-XXL_225			(MC2	FB)  : MUX 9		Ref (D60fb)
-OUTBIT			(MC11	FB)  : MUX 11		Ref (E79fb)
-CA5			(MC4	FB)  : MUX 14		Ref (E66fb)
-CA2			(MC7	FB)  : MUX 18		Ref (E71fb)
-XXL_234			(MC3	FB)  : MUX 19		Ref (D63fb)
-XXL_233			(MC1	FB)  : MUX 29		Ref (D58fb)
-CA7			(MC12	FB)  : MUX 39		Ref (F96fb)
+CA0			(MC3	FB)  : MUX 0		Ref (D52fb)
+XXL_233			(MC4	FB)  : MUX 1		Ref (D58fb)
+CA4			(MC11	FB)  : MUX 4		Ref (E72fb)
+XXL_234			(MC6	FB)  : MUX 5		Ref (D63fb)
+CA7			(MC12	FB)  : MUX 7		Ref (F96fb)
+XXL_225			(MC5	FB)  : MUX 9		Ref (D60fb)
+CA1			(MC10	FB)  : MUX 10		Ref (E71fb)
+CA2			(MC2	FB)  : MUX 16		Ref (D50fb)
+CA3			(MC7	FB)  : MUX 18		Ref (E66fb)
+OUTBIT			(MC1	FB)  : MUX 23		Ref (A15fb)
+CA5			(MC9	FB)  : MUX 24		Ref (E69fb)
+CA6			(MC8	FB)  : MUX 32		Ref (E68fb)
 
 FanIn assignment for block H [17]
 {
-CA4,CA0,CA6,CA5,CA3,CA7,
+CA0,CA6,CA5,CA7,CA3,CA4,
 OUTBIT,
-V5,V8,V3,V9,V7,V4,V6,V2,V1,V0,
+V2,V5,V4,V1,V6,V7,V8,V3,V9,V0,
 }
 Multiplexer assignment for block H
-V5			(MC3	FB)  : MUX 0		Ref (B23fb)
-CA4			(MC12	FB)  : MUX 2		Ref (E68fb)
-V8			(MC8	FB)  : MUX 3		Ref (B31fb)
-CA0			(MC13	FB)  : MUX 4		Ref (E72fb)
-V3			(MC1	FB)  : MUX 6		Ref (B18fb)
-V9			(MC9	FB)  : MUX 7		Ref (B32fb)
-V7			(MC6	FB)  : MUX 9		Ref (B28fb)
-CA6			(MC14	FB)  : MUX 13		Ref (E75fb)
-CA5			(MC11	FB)  : MUX 14		Ref (E66fb)
-OUTBIT			(MC16	FB)  : MUX 17		Ref (E79fb)
-V4			(MC2	FB)  : MUX 18		Ref (B20fb)
-CA3			(MC15	FB)  : MUX 21		Ref (E77fb)
-V6			(MC5	FB)  : MUX 23		Ref (B26fb)
-CA7			(MC17	FB)  : MUX 25		Ref (F96fb)
-V2			(MC7	FB)  : MUX 27		Ref (B30fb)
-V1			(MC4	FB)  : MUX 35		Ref (B25fb)
-V0			(MC10	FB)  : MUX 37		Ref (C47fb)
+CA0			(MC11	FB)  : MUX 0		Ref (D52fb)
+V2			(MC4	FB)  : MUX 1		Ref (C41fb)
+CA6			(MC14	FB)  : MUX 2		Ref (E68fb)
+V5			(MC7	FB)  : MUX 5		Ref (C44fb)
+CA5			(MC15	FB)  : MUX 6		Ref (E69fb)
+CA7			(MC17	FB)  : MUX 7		Ref (F96fb)
+V4			(MC5	FB)  : MUX 9		Ref (C42fb)
+V1			(MC2	FB)  : MUX 10		Ref (C39fb)
+V6			(MC6	FB)  : MUX 13		Ref (C43fb)
+CA3			(MC13	FB)  : MUX 14		Ref (E66fb)
+V7			(MC8	FB)  : MUX 17		Ref (C45fb)
+V8			(MC10	FB)  : MUX 21		Ref (C48fb)
+OUTBIT			(MC1	FB)  : MUX 23		Ref (A15fb)
+V3			(MC3	FB)  : MUX 28		Ref (C40fb)
+CA4			(MC16	FB)  : MUX 36		Ref (E72fb)
+V9			(MC9	FB)  : MUX 37		Ref (C47fb)
+V0			(MC12	FB)  : MUX 38		Ref (D55fb)
 
 Creating JEDEC file FATSCUNK.jed ...
 
@@ -627,8 +631,7 @@ Com_Ctrl_221 = ((!COLS80 & S0.Q & !S1.Q & !S2.Q & !S3.Q)
 Com_Ctrl_222 = (RST
 	# (V0.Q & !V1.Q & V2.Q & V3.Q & !V4.Q & !V5.Q & !V6.Q & !V7.Q & !V8.Q & V9.Q));
 
-Com_Ctrl_223 = (RST
-	# (!H0.Q & !H1.Q & !H2.Q & !H3.Q & !H4.Q & !H5.Q & !H6.Q & H7.Q & !H8.Q & H9.Q));
+!Com_Ctrl_223 = (!HFPD.Q & !RST & !VFPD.Q);
 
 Com_Ctrl_224 = (RST
 	# (!H0.Q & !H1.Q & !H2.Q & !H3.Q & !H4.Q & H5.Q & !H6.Q & !H7.Q & H8.Q & H9.Q));
@@ -930,70 +933,71 @@ Pin 96 = BE; /* MC 11 */
 Pin 97 = VSP; /* MC  9 */
 Pin 98 = HSP; /* MC  8 */
 Pin 100 = CCLK; /* MC  5 */
-PINNODE 601 = Com_Ctrl_221; /* MC 1 Feedback */
-PINNODE 602 = S2; /* MC 2 Feedback */
-PINNODE 603 = Com_Ctrl_220; /* MC 3 Feedback */
-PINNODE 604 = SR7; /* MC 4 Feedback */
+PINNODE 316 = Com_Ctrl_223; /* MC 16 Foldback */
+PINNODE 330 = Com_Ctrl_223; /* MC 30 Foldback */
+PINNODE 601 = Com_Ctrl_220; /* MC 1 Feedback */
+PINNODE 602 = SR3; /* MC 2 Feedback */
+PINNODE 603 = S0; /* MC 3 Feedback */
+PINNODE 604 = SR2; /* MC 4 Feedback */
 PINNODE 606 = S1; /* MC 6 Feedback */
-PINNODE 607 = XXL_229; /* MC 7 Feedback */
-PINNODE 610 = XXL_228; /* MC 10 Feedback */
-PINNODE 612 = XXL_226; /* MC 12 Feedback */
-PINNODE 613 = S0; /* MC 13 Feedback */
-PINNODE 615 = XXL_227; /* MC 15 Feedback */
-PINNODE 616 = S3; /* MC 16 Feedback */
-PINNODE 617 = VBPD.C; /* MC 17 Feedback */
-PINNODE 618 = V3; /* MC 18 Feedback */
-PINNODE 619 = VSPD.C; /* MC 19 Feedback */
-PINNODE 620 = V4; /* MC 20 Feedback */
-PINNODE 621 = VFPD.C; /* MC 21 Feedback */
-PINNODE 622 = HBPD; /* MC 22 Feedback */
-PINNODE 623 = V5; /* MC 23 Feedback */
-PINNODE 624 = HFPD; /* MC 24 Feedback */
-PINNODE 625 = V1; /* MC 25 Feedback */
-PINNODE 626 = V6; /* MC 26 Feedback */
-PINNODE 627 = VSPD.AR; /* MC 27 Feedback */
-PINNODE 628 = V7; /* MC 28 Feedback */
-PINNODE 629 = VFPD.AR; /* MC 29 Feedback */
-PINNODE 630 = V2; /* MC 30 Feedback */
-PINNODE 631 = V8; /* MC 31 Feedback */
-PINNODE 632 = V9; /* MC 32 Feedback */
-PINNODE 633 = H2; /* MC 33 Feedback */
-PINNODE 634 = H3; /* MC 34 Feedback */
-PINNODE 635 = H4; /* MC 35 Feedback */
-PINNODE 636 = H5; /* MC 36 Feedback */
-PINNODE 637 = H6; /* MC 37 Feedback */
-PINNODE 638 = H7; /* MC 38 Feedback */
-PINNODE 639 = H8; /* MC 39 Feedback */
-PINNODE 640 = Com_Ctrl_224; /* MC 40 Feedback */
-PINNODE 641 = H9; /* MC 41 Feedback */
-PINNODE 642 = Com_Ctrl_223; /* MC 42 Feedback */
-PINNODE 643 = Com_Ctrl_222; /* MC 43 Feedback */
-PINNODE 644 = HSPD.AR; /* MC 44 Feedback */
-PINNODE 645 = HFPD.AR; /* MC 45 Feedback */
-PINNODE 646 = H1; /* MC 46 Feedback */
-PINNODE 647 = V0; /* MC 47 Feedback */
-PINNODE 648 = HSPD; /* MC 48 Feedback */
-PINNODE 650 = XXL_232; /* MC 50 Feedback */
-PINNODE 652 = XXL_231; /* MC 52 Feedback */
-PINNODE 655 = XXL_230; /* MC 55 Feedback */
+PINNODE 607 = SR4; /* MC 7 Feedback */
+PINNODE 610 = SR1; /* MC 10 Feedback */
+PINNODE 612 = SR7; /* MC 12 Feedback */
+PINNODE 613 = S3; /* MC 13 Feedback */
+PINNODE 615 = OUTBIT; /* MC 15 Feedback */
+PINNODE 616 = S2; /* MC 16 Feedback */
+PINNODE 618 = VBPD.C; /* MC 18 Feedback */
+PINNODE 620 = VSPD.AR; /* MC 20 Feedback */
+PINNODE 623 = VFPD.AR; /* MC 23 Feedback */
+PINNODE 626 = SR5; /* MC 26 Feedback */
+PINNODE 627 = Com_Ctrl_222; /* MC 27 Feedback */
+PINNODE 628 = SR6; /* MC 28 Feedback */
+PINNODE 629 = VSPD.C; /* MC 29 Feedback */
+PINNODE 630 = VFPD.C; /* MC 30 Feedback */
+PINNODE 631 = XXL_232; /* MC 31 Feedback */
+PINNODE 632 = XXL_231; /* MC 32 Feedback */
+PINNODE 633 = Com_Ctrl_224; /* MC 33 Feedback */
+PINNODE 634 = HSPD.AR; /* MC 34 Feedback */
+PINNODE 635 = HFPD.AR; /* MC 35 Feedback */
+PINNODE 636 = HSPD; /* MC 36 Feedback */
+PINNODE 637 = HFPD; /* MC 37 Feedback */
+PINNODE 638 = HBPD; /* MC 38 Feedback */
+PINNODE 639 = V1; /* MC 39 Feedback */
+PINNODE 640 = V3; /* MC 40 Feedback */
+PINNODE 641 = V2; /* MC 41 Feedback */
+PINNODE 642 = V4; /* MC 42 Feedback */
+PINNODE 643 = V6; /* MC 43 Feedback */
+PINNODE 644 = V5; /* MC 44 Feedback */
+PINNODE 645 = V7; /* MC 45 Feedback */
+PINNODE 646 = H9; /* MC 46 Feedback */
+PINNODE 647 = V9; /* MC 47 Feedback */
+PINNODE 648 = V8; /* MC 48 Feedback */
+PINNODE 650 = CA2; /* MC 50 Feedback */
+PINNODE 651 = H0; /* MC 51 Feedback */
+PINNODE 652 = CA0; /* MC 52 Feedback */
+PINNODE 653 = H2; /* MC 53 Feedback */
+PINNODE 654 = H1; /* MC 54 Feedback */
+PINNODE 655 = V0; /* MC 55 Feedback */
+PINNODE 656 = H3; /* MC 56 Feedback */
+PINNODE 657 = H4; /* MC 57 Feedback */
 PINNODE 658 = XXL_233; /* MC 58 Feedback */
+PINNODE 659 = H5; /* MC 59 Feedback */
 PINNODE 660 = XXL_225; /* MC 60 Feedback */
-PINNODE 662 = SR4; /* MC 62 Feedback */
+PINNODE 661 = H6; /* MC 61 Feedback */
+PINNODE 662 = H7; /* MC 62 Feedback */
 PINNODE 663 = XXL_234; /* MC 63 Feedback */
-PINNODE 664 = SR1; /* MC 64 Feedback */
-PINNODE 666 = CA5; /* MC 66 Feedback */
-PINNODE 668 = CA4; /* MC 68 Feedback */
-PINNODE 669 = CA1; /* MC 69 Feedback */
-PINNODE 671 = CA2; /* MC 71 Feedback */
-PINNODE 672 = CA0; /* MC 72 Feedback */
-PINNODE 673 = SR5; /* MC 73 Feedback */
-PINNODE 674 = SR6; /* MC 74 Feedback */
-PINNODE 675 = CA6; /* MC 75 Feedback */
-PINNODE 676 = SR3; /* MC 76 Feedback */
-PINNODE 677 = CA3; /* MC 77 Feedback */
-PINNODE 679 = OUTBIT; /* MC 79 Feedback */
-PINNODE 680 = SR2; /* MC 80 Feedback */
-PINNODE 687 = H0; /* MC 87 Feedback */
+PINNODE 664 = H8; /* MC 64 Feedback */
+PINNODE 666 = CA3; /* MC 66 Feedback */
+PINNODE 668 = CA6; /* MC 68 Feedback */
+PINNODE 669 = CA5; /* MC 69 Feedback */
+PINNODE 671 = CA1; /* MC 71 Feedback */
+PINNODE 672 = CA4; /* MC 72 Feedback */
+PINNODE 673 = XXL_230; /* MC 73 Feedback */
+PINNODE 674 = XXL_229; /* MC 74 Feedback */
+PINNODE 676 = XXL_227; /* MC 76 Feedback */
+PINNODE 677 = Com_Ctrl_221; /* MC 77 Feedback */
+PINNODE 679 = XXL_226; /* MC 79 Feedback */
+PINNODE 680 = XXL_228; /* MC 80 Feedback */
 PINNODE 690 = VSPD; /* MC 90 Feedback */
 PINNODE 692 = VFPD; /* MC 92 Feedback */
 PINNODE 695 = VBPD; /* MC 95 Feedback */
@@ -1016,156 +1020,156 @@ DCERP Field = Summary of Allocations.
 
 For input only = INPUT.
 
-MCell Pin# Oe   PinDrive  DCERP  FBDrive      DCERP  Foldback  CascadeOut     TotPT output_slew
-MC1   2         --               Com_Ctrl_221 C----  --        --             2     slow
-MC2   0         --               S2           Tger-  --        --             3     slow
-MC3   1         --               Com_Ctrl_220 C----  --        --             2     slow
-MC4   0         --               SR7          Dc-r-  --        --             4     slow
-MC5   100  on   CCLK      C----  --                  --        --             2     slow
-MC6   99        --               S1           Tger-  --        --             3     slow
-MC7   0         --               XXL_229      C----  NA        --             5     slow
-MC8   98   on   HSP       C----  --                  --        --             1     slow
-MC9   97   on   VSP       C----  --                  --        --             1     slow
-MC10  0         --               XXL_228      C----  NA        --             5     slow
-MC11  96   on   BE        C----  --                  --        --             0     slow
-MC12  0         --               XXL_226      C----  NA        --             5     slow
-MC13  94        --               S0           Tger-  --        --             2     slow
-MC14  93   on   DPMCE     C----  --                  --        --             2     slow
-MC15  0         --               XXL_227      C----  NA        --             5     slow
-MC16  92        --               S3           Tger-  --        --             3     slow
-MC17  14        --               VBPD.C       C----  --        --             2     slow
-MC18  0         --               V3           Tc-r-  --        --             3     slow
-MC19  13        --               VSPD.C       C----  --        --             2     slow
-MC20  0         --               V4           Tc-r-  --        --             3     slow
-MC21  12        --               VFPD.C       C----  --        --             2     slow
-MC22  10        --               HBPD         Dc-r-  --        --             2     slow
-MC23  0         --               V5           Tc-r-  --        --             3     slow
-MC24  9         --               HFPD         Dc-r-  --        --             2     slow
-MC25  8         --               V1           Tc-r-  --        --             3     slow
-MC26  0         --               V6           Tc-r-  --        --             3     slow
-MC27  7         --               VSPD.AR      C----  --        --             3     slow
-MC28  0         --               V7           Tc-r-  --        --             3     slow
-MC29  6         --               VFPD.AR      C----  --        --             3     slow
-MC30  5         --               V2           Tc-r-  --        --             3     slow
-MC31  0         --               V8           Tc-r-  --        --             3     slow
-MC32  4    --   TDI       INPUT  V9           Tc-r-  --        --             3     slow
-MC33  25   --   CB0       INPUT  H2           Tg-r-  --        --             2     slow
-MC34  0         --               H3           Tg-r-  --        --             2     slow
-MC35  24   --   CB1       INPUT  H4           Tg-r-  --        --             2     slow
-MC36  0         --               H5           Tg-r-  --        --             2     slow
-MC37  23   --   CB2       INPUT  H6           Tg-r-  --        --             2     slow
-MC38  22   --   CB3       INPUT  H7           Tg-r-  --        --             2     slow
-MC39  0         --               H8           Tg-r-  --        --             2     slow
-MC40  21   --   CB4       INPUT  Com_Ctrl_224 C----  --        --             2     slow
-MC41  20   --   CB5       INPUT  H9           Tg-r-  --        --             2     slow
-MC42  0         --               Com_Ctrl_223 C----  --        --             2     slow
-MC43  19   --   CB6       INPUT  Com_Ctrl_222 C----  --        --             2     slow
-MC44  0         --               HSPD.AR      C----  --        --             2     slow
-MC45  17   --   CB7       INPUT  HFPD.AR      C----  --        --             2     slow
-MC46  16        --               H1           Tg-r-  --        --             2     slow
-MC47  0         --               V0           Tc-r-  --        --             2     slow
-MC48  15   --   TMS       INPUT  HSPD         Dc-r-  --        --             2     slow
-MC49  37        --               --                  --        --             0     slow
-MC50  0         --               XXL_232      C----  NA        --             5     slow
-MC51  36        --               --                  --        --             0     slow
-MC52  0         --               XXL_231      C----  NA        --             5     slow
-MC53  35        --               --                  --        --             0     slow
-MC54  33        --               --                  --        --             0     slow
-MC55  0         --               XXL_230      C----  NA        --             5     slow
-MC56  32        --               --                  --        --             0     slow
-MC57  31        --               --                  --        --             0     slow
-MC58  0         --               XXL_233      C----  NA        --             5     slow
-MC59  30        --               --                  --        --             0     slow
-MC60  0         --               XXL_225      C----  NA        --             5     slow
-MC61  29        --               --                  --        --             0     slow
-MC62  28        --               SR4          Dc-r-  --        --             4     slow
-MC63  0         --               XXL_234      C----  NA        --             5     slow
-MC64  27        --               SR1          Dc-r-  --        --             4     slow
-MC65  40        --               --                  --        --             0     slow
-MC66  0         --               CA5          Dc-r-  --        --             3     slow
-MC67  41        --               --                  --        --             0     slow
-MC68  0         --               CA4          Dc-r-  --        --             3     slow
-MC69  42   --   COLS80    INPUT  CA1          Dc-r-  --        --             3     slow
-MC70  44        --               --                  --        --             0     slow
-MC71  0         --               CA2          Dc-r-  --        --             3     slow
-MC72  45   --   CCA1      INPUT  CA0          Dc-r-  --        --             3     slow
-MC73  46   --   CCA0      INPUT  SR5          Dc-r-  --        --             4     slow
-MC74  0         --               SR6          Dc-r-  --        --             4     slow
-MC75  47        --               CA6          Dc-r-  --        --             3     slow
-MC76  0         --               SR3          Dc-r-  --        --             4     slow
-MC77  48        --               CA3          Dc-r-  --        --             3     slow
-MC78  49   on   FETCHMODE C----  --                  --        --             1     slow
-MC79  0         --               OUTBIT       Dc-r-  --        --             4     slow
-MC80  50   --   CCA6      INPUT  SR2          Dc-r-  --        --             4     slow
-MC81  52   --   CCA7      INPUT  --                  --        --             0     slow
-MC82  0         --               --                  --        --             0     slow
-MC83  53        --               --                  --        --             0     slow
-MC84  0         --               --                  --        --             0     slow
-MC85  54        --               --                  --        --             0     slow
-MC86  55        --               --                  --        --             0     slow
-MC87  0         --               H0           Tg-r-  --        --             1     slow
-MC88  56        --               --                  --        --             0     slow
-MC89  57        --               --                  --        --             0     slow
-MC90  0         --               VSPD         Dc-r-  --        --             2     slow
-MC91  58        --               --                  --        --             0     slow
-MC92  0         --               VFPD         Dc-r-  --        --             2     slow
-MC93  60        --               --                  --        --             0     slow
-MC94  61        --               --                  --        --             0     slow
-MC95  0         --               VBPD         Dc-r-  --        --             2     slow
-MC96  62   --   TCK       INPUT  CA7          Dc-r-  --        --             3     slow
-MC97  63        --               --                  --        --             0     slow
-MC98  0         --               --                  --        --             0     slow
-MC99  64   --   CCA5      INPUT  --                  --        --             0     slow
-MC100 0         --               --                  --        --             0     slow
-MC101 65        --               --                  --        --             0     slow
-MC102 67        --               --                  --        --             0     slow
-MC103 0         --               --                  --        --             0     slow
-MC104 68   --   CCA4      INPUT  --                  --        --             0     slow
-MC105 69   --   CCA3      INPUT  --                  --        --             0     slow
-MC106 0         --               --                  --        --             0     slow
-MC107 70   --   CCA2      INPUT  --                  --        --             0     slow
-MC108 0         --               --                  --        --             0     slow
-MC109 71   on   BLUE      C----  --                  NA        --             5     slow
-MC110 72   on   GREEN     C----  --                  --        --             2     slow
-MC111 0         --               --                  --        --             0     slow
-MC112 73   --   TDO       INPUT  --                  --        --             0     slow
-MC113 75   on   RED       C----  --                  --        --             3     slow
-MC114 0         --               --                  --        --             0     slow
-MC115 76   --   RST       INPUT  --                  --        --             0     slow
-MC116 0         --               --                  --        --             0     slow
-MC117 77        --               --                  --        --             0     slow
-MC118 78        --               --                  --        --             0     slow
-MC119 0         --               --                  --        --             0     slow
-MC120 79        --               --                  --        --             0     slow
-MC121 80        --               --                  --        --             0     slow
-MC122 0         --               --                  --        --             0     slow
-MC123 81   on   CRST      C----  --                  --        --             1     slow
-MC124 0         --               --                  --        --             0     slow
-MC125 83        --               --                  --        --             0     slow
-MC126 84        --               --                  --        --             0     slow
-MC127 0         --               --                  --        --             0     slow
-MC128 85        --               --                  --        --             0     slow
-MC0   90        --               --                  --        --             0     slow
-MC0   89        --               --                  --        --             0     slow
-MC0   88        --               --                  --        --             0     slow
-MC0   87        PCLK      INPUT  --                  --        --             0     slow
+MCell Pin# Oe   PinDrive  DCERP  FBDrive      DCERP  Foldback     CascadeOut     TotPT output_slew
+MC1   2         --               Com_Ctrl_220 C----  --           --             2     slow
+MC2   0         --               SR3          Dc-r-  --           --             4     slow
+MC3   1         --               S0           Tger-  --           --             2     slow
+MC4   0         --               SR2          Dc-r-  --           --             4     slow
+MC5   100  on   CCLK      C----  --                  --           --             2     slow
+MC6   99        --               S1           Tger-  --           --             3     slow
+MC7   0         --               SR4          Dc-r-  --           --             4     slow
+MC8   98   on   HSP       C----  --                  --           --             1     slow
+MC9   97   on   VSP       C----  --                  --           --             1     slow
+MC10  0         --               SR1          Dc-r-  --           --             4     slow
+MC11  96   on   BE        C----  --                  --           --             0     slow
+MC12  0         --               SR7          Dc-r-  --           --             4     slow
+MC13  94        --               S3           Tger-  --           --             3     slow
+MC14  93   on   DPMCE     C----  --                  --           --             2     slow
+MC15  0         --               OUTBIT       Dc-r-  --           --             4     slow
+MC16  92        --               S2           Tger-  Com_Ctrl_223 --             4     slow
+MC17  14        --               --                  --           --             0     slow
+MC18  0         --               VBPD.C       C----  --           --             2     slow
+MC19  13        --               --                  --           --             0     slow
+MC20  0         --               VSPD.AR      C----  --           --             3     slow
+MC21  12        --               --                  --           --             0     slow
+MC22  10        --               --                  --           --             0     slow
+MC23  0         --               VFPD.AR      C----  --           --             3     slow
+MC24  9         --               --                  --           --             0     slow
+MC25  8         --               --                  --           --             0     slow
+MC26  0         --               SR5          Dc-r-  --           --             4     slow
+MC27  7         --               Com_Ctrl_222 C----  --           --             2     slow
+MC28  0         --               SR6          Dc-r-  --           --             4     slow
+MC29  6         --               VSPD.C       C----  --           --             2     slow
+MC30  5         --               VFPD.C       C----  Com_Ctrl_223 --             3     slow
+MC31  0         --               XXL_232      C----  NA           --             5     slow
+MC32  4    --   TDI       INPUT  XXL_231      C----  NA           --             5     slow
+MC33  25   --   CB0       INPUT  Com_Ctrl_224 C----  --           --             2     slow
+MC34  0         --               HSPD.AR      C----  --           --             2     slow
+MC35  24   --   CB1       INPUT  HFPD.AR      C----  --           --             2     slow
+MC36  0         --               HSPD         Dc-r-  --           --             2     slow
+MC37  23   --   CB2       INPUT  HFPD         Dc-r-  --           --             2     slow
+MC38  22   --   CB3       INPUT  HBPD         Dc-r-  --           --             2     slow
+MC39  0         --               V1           Tc-r-  --           --             3     slow
+MC40  21   --   CB4       INPUT  V3           Tc-r-  --           --             3     slow
+MC41  20   --   CB5       INPUT  V2           Tc-r-  --           --             3     slow
+MC42  0         --               V4           Tc-r-  --           --             3     slow
+MC43  19   --   CB6       INPUT  V6           Tc-r-  --           --             3     slow
+MC44  0         --               V5           Tc-r-  --           --             3     slow
+MC45  17   --   CB7       INPUT  V7           Tc-r-  --           --             3     slow
+MC46  16        --               H9           Tg-r-  --           --             2     slow
+MC47  0         --               V9           Tc-r-  --           --             3     slow
+MC48  15   --   TMS       INPUT  V8           Tc-r-  --           --             3     slow
+MC49  37        --               --                  --           --             0     slow
+MC50  0         --               CA2          Dc-r-  --           --             3     slow
+MC51  36        --               H0           Tg-r-  --           --             1     slow
+MC52  0         --               CA0          Dc-r-  --           --             3     slow
+MC53  35        --               H2           Tg-r-  --           --             2     slow
+MC54  33        --               H1           Tg-r-  --           --             2     slow
+MC55  0         --               V0           Tc-r-  --           --             2     slow
+MC56  32        --               H3           Tg-r-  --           --             2     slow
+MC57  31        --               H4           Tg-r-  --           --             2     slow
+MC58  0         --               XXL_233      C----  NA           --             5     slow
+MC59  30        --               H5           Tg-r-  --           --             2     slow
+MC60  0         --               XXL_225      C----  NA           --             5     slow
+MC61  29        --               H6           Tg-r-  --           --             2     slow
+MC62  28        --               H7           Tg-r-  --           --             2     slow
+MC63  0         --               XXL_234      C----  NA           --             5     slow
+MC64  27        --               H8           Tg-r-  --           --             2     slow
+MC65  40        --               --                  --           --             0     slow
+MC66  0         --               CA3          Dc-r-  --           --             3     slow
+MC67  41        --               --                  --           --             0     slow
+MC68  0         --               CA6          Dc-r-  --           --             3     slow
+MC69  42   --   COLS80    INPUT  CA5          Dc-r-  --           --             3     slow
+MC70  44        --               --                  --           --             0     slow
+MC71  0         --               CA1          Dc-r-  --           --             3     slow
+MC72  45   --   CCA1      INPUT  CA4          Dc-r-  --           --             3     slow
+MC73  46   --   CCA0      INPUT  XXL_230      C----  NA           --             5     slow
+MC74  0         --               XXL_229      C----  NA           --             5     slow
+MC75  47        --               --                  --           --             0     slow
+MC76  0         --               XXL_227      C----  NA           --             5     slow
+MC77  48        --               Com_Ctrl_221 C----  --           --             2     slow
+MC78  49   on   FETCHMODE C----  --                  --           --             1     slow
+MC79  0         --               XXL_226      C----  NA           --             5     slow
+MC80  50   --   CCA6      INPUT  XXL_228      C----  NA           --             5     slow
+MC81  52   --   CCA7      INPUT  --                  --           --             0     slow
+MC82  0         --               --                  --           --             0     slow
+MC83  53        --               --                  --           --             0     slow
+MC84  0         --               --                  --           --             0     slow
+MC85  54        --               --                  --           --             0     slow
+MC86  55        --               --                  --           --             0     slow
+MC87  0         --               --                  --           --             0     slow
+MC88  56        --               --                  --           --             0     slow
+MC89  57        --               --                  --           --             0     slow
+MC90  0         --               VSPD         Dc-r-  --           --             2     slow
+MC91  58        --               --                  --           --             0     slow
+MC92  0         --               VFPD         Dc-r-  --           --             2     slow
+MC93  60        --               --                  --           --             0     slow
+MC94  61        --               --                  --           --             0     slow
+MC95  0         --               VBPD         Dc-r-  --           --             2     slow
+MC96  62   --   TCK       INPUT  CA7          Dc-r-  --           --             3     slow
+MC97  63        --               --                  --           --             0     slow
+MC98  0         --               --                  --           --             0     slow
+MC99  64   --   CCA5      INPUT  --                  --           --             0     slow
+MC100 0         --               --                  --           --             0     slow
+MC101 65        --               --                  --           --             0     slow
+MC102 67        --               --                  --           --             0     slow
+MC103 0         --               --                  --           --             0     slow
+MC104 68   --   CCA4      INPUT  --                  --           --             0     slow
+MC105 69   --   CCA3      INPUT  --                  --           --             0     slow
+MC106 0         --               --                  --           --             0     slow
+MC107 70   --   CCA2      INPUT  --                  --           --             0     slow
+MC108 0         --               --                  --           --             0     slow
+MC109 71   on   BLUE      C----  --                  NA           --             5     slow
+MC110 72   on   GREEN     C----  --                  --           --             2     slow
+MC111 0         --               --                  --           --             0     slow
+MC112 73   --   TDO       INPUT  --                  --           --             0     slow
+MC113 75   on   RED       C----  --                  --           --             3     slow
+MC114 0         --               --                  --           --             0     slow
+MC115 76   --   RST       INPUT  --                  --           --             0     slow
+MC116 0         --               --                  --           --             0     slow
+MC117 77        --               --                  --           --             0     slow
+MC118 78        --               --                  --           --             0     slow
+MC119 0         --               --                  --           --             0     slow
+MC120 79        --               --                  --           --             0     slow
+MC121 80        --               --                  --           --             0     slow
+MC122 0         --               --                  --           --             0     slow
+MC123 81   on   CRST      C----  --                  --           --             1     slow
+MC124 0         --               --                  --           --             0     slow
+MC125 83        --               --                  --           --             0     slow
+MC126 84        --               --                  --           --             0     slow
+MC127 0         --               --                  --           --             0     slow
+MC128 85        --               --                  --           --             0     slow
+MC0   90        --               --                  --           --             0     slow
+MC0   89        --               --                  --           --             0     slow
+MC0   88        --               --                  --           --             0     slow
+MC0   87        PCLK      INPUT  --                  --           --             0     slow
 
 Logic Array Block	Logic Cells	I/O Pins	Foldbacks	TotalPT		FanIN	Cascades
-A: LC1	- LC16		16/16(100%)	5/16(31%)	0/16(0%)	45/80(56%)	(24)	0
-B: LC17	- LC32		16/16(100%)	1/16(6%)	0/16(0%)	43/80(53%)	(25)	0
-C: LC33	- LC48		16/16(100%)	9/16(56%)	0/16(0%)	32/80(40%)	(24)	0
-D: LC49	- LC64		8/16(50%)	0/16(0%)	0/16(0%)	38/80(47%)	(25)	0
-E: LC65	- LC80		13/16(81%)	5/16(31%)	0/16(0%)	42/80(52%)	(25)	0
-F: LC81	- LC96		5/16(31%)	2/16(12%)	0/16(0%)	10/80(12%)	(10)	0
+A: LC1	- LC16		16/16(100%)	5/16(31%)	1/16(6%)	44/80(55%)	(25)	0
+B: LC17	- LC32		10/16(62%)	1/16(6%)	1/16(6%)	33/80(41%)	(25)	0
+C: LC33	- LC48		16/16(100%)	9/16(56%)	0/16(0%)	41/80(51%)	(24)	0
+D: LC49	- LC64		15/16(93%)	0/16(0%)	0/16(0%)	40/80(50%)	(25)	0
+E: LC65	- LC80		12/16(75%)	5/16(31%)	0/16(0%)	43/80(53%)	(25)	0
+F: LC81	- LC96		4/16(25%)	2/16(12%)	0/16(0%)	9/80(11%)	(9)	0
 G: LC97	- LC112		2/16(12%)	7/16(43%)	0/16(0%)	7/80(8%)	(12)	0
 H: LC113- LC128		2/16(12%)	3/16(18%)	0/16(0%)	4/80(5%)	(17)	0
 
 Total dedicated input used:	1/4 	(25%)
 Total I/O pins used		32/80 	(40%)
-Total Logic cells used 		78/128 	(60%)
+Total Logic cells used 		77/128 	(60%)
 Total Flip-Flop used 		46/128 	(35%)
-Total Foldback logic used 	0/128 	(0%)
-Total Nodes+FB/MCells 		78/128 	(60%)
+Total Foldback logic used 	2/128 	(1%)
+Total Nodes+FB/MCells 		79/128 	(61%)
 Total cascade used 		0
 Total input pins 		23
 Total output pins 		10
