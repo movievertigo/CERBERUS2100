@@ -50,7 +50,7 @@ Pin 25 = CA6;
 Pin 24 = CA7;
 
 /** Unused pins routed from SCUNK **/
-Pin 88 = FREE1; /** FATCAVIA's INPUT/OE1 **/
+Pin 88 = FETCHMODE; /** (was FREE1) Signal to fetch the graphics mode value **/
 Pin 89 = FREE2; /** FATCAVIA's INPUT/GCLR **/
 Pin 90 = FREE3; /** FATCAVIA's INPUT/GCLK2 **/
 
@@ -60,17 +60,17 @@ Pin 90 = FREE3; /** FATCAVIA's INPUT/GCLK2 **/
 /*************/
 
 /** Video Memory Address to video memory **/
-Pin 8  = VMA10;
-Pin 9  = VMA0;
-Pin 10 = VMA1;
-Pin 13 = VMA2;
-Pin 14 = VMA3;
-Pin 16 = VMA4;
-Pin 17 = VMA5;
-Pin 19 = VMA6;
-Pin 20 = VMA7;
-Pin 21 = VMA8;
-Pin 23 = VMA9;
+Pin 8  = VIRTVMA10;
+Pin 9  = VIRTVMA0;
+Pin 10 = VIRTVMA1;
+Pin 13 = VIRTVMA2;
+Pin 14 = VIRTVMA3;
+Pin 16 = VIRTVMA4;
+Pin 17 = VIRTVMA5;
+Pin 19 = VIRTVMA6;
+Pin 20 = VIRTVMA7;
+Pin 21 = VIRTVMA8;
+Pin 23 = VIRTVMA9;
 
 /** Character Memory Address to character memory **/
 Pin 33 = CMA0;
@@ -99,7 +99,8 @@ Pin 65 = FREE8;
 Pin 75 = FREE9;
 Pin 76 = FREE10;
 Pin 77 = FREE11;
-Pin 78 = FREE12;
+
+Pin 78 = COLS80; /** (was FREE12) Tell SCUNK to use 80 column mode **/
 
 
 /*******************/
@@ -107,11 +108,11 @@ Pin 78 = FREE12;
 /*******************/
 
 Pinnode = [LPC3..0]; /** Token Line Passes Counter, 0 to 15 (4 bits) **/
-Pinnode = [TLC5..0]; /** Token Line Counter, 0 to 40 (6 bits) **/
+Pinnode = [TLC6..0]; /** Token Line Counter, 0 to 80 (7 bits) **/
 Pinnode = [FBA10..3]; /** Fall-back address to reset video memory addr counter **/
-                      /** Only multiples of 40 are relevant, so no need **/
-                      /** to use the 3 least significant bits **/
-
+                      /** Only multiples of 80 are relevant, so no need **/
+                      /** to use the 4 least significant bits **/
+Pinnode = [VMA10..0];
 
 /***********/
 /** Logic **/
@@ -142,21 +143,46 @@ FREE10 = CA6;
 FREE11 = CA7;
 
 
+/** Setting video memory address **/
+VIRTVMA0  = FETCHMODE # (!FETCHMODE & VMA0);
+VIRTVMA1  =             (!FETCHMODE & VMA1);
+VIRTVMA2  =             (!FETCHMODE & VMA2);
+VIRTVMA3  = FETCHMODE # (!FETCHMODE & VMA3);
+VIRTVMA4  = FETCHMODE # (!FETCHMODE & VMA4);
+VIRTVMA5  = FETCHMODE # (!FETCHMODE & VMA5);
+VIRTVMA6  = FETCHMODE # (!FETCHMODE & VMA6);
+VIRTVMA7  = FETCHMODE # (!FETCHMODE & VMA7);
+VIRTVMA8  = FETCHMODE # (!FETCHMODE & VMA8);
+VIRTVMA9  = FETCHMODE # (!FETCHMODE & VMA9);
+VIRTVMA10 = FETCHMODE # (!FETCHMODE & VMA10);
+
+/********************************************************/
+/** Buffer the graphics mode while it is being fetched **/
+/********************************************************/
+COLS80.d = CA0;
+[COLS80].ck = !FETCHMODE;
+
 /************************/
 /** Token line counter **/
 /************************/
+TLC6.t = TLC5 & TLC4 & TLC3 & TLC2 & TLC1 & TLC0;
 TLC5.t = TLC4 & TLC3 & TLC2 & TLC1 & TLC0;
 TLC4.t = TLC3 & TLC2 & TLC1 & TLC0;
 TLC3.t = TLC2 & TLC1 & TLC0;
 TLC2.t = TLC1 & TLC0;
 TLC1.t = TLC0;
 TLC0.t = 'b'1;
-[TLC5..0].ck = CCLK;
-[TLC5..0].ar = CRST #
+[TLC6..0].ck = CCLK;
+[TLC6..0].ar = !COLS80 &
+                (CRST #
                (TLC5 & !TLC4 &
-                TLC3 & !TLC2 & !TLC1 & !TLC0);
+                TLC3 & !TLC2 & !TLC1 & !TLC0))
+                # COLS80 &
+                (CRST #
+               (TLC6 & !TLC5 &
+                TLC4 & !TLC3 & !TLC2 & !TLC1 & !TLC0));
 /** The above resets token line counter when counter tries to **/
-/** address beyond highest token line position (address 40)   **/
+/** address beyond highest token line position (address 80)   **/
 
 
 /*********************************************************************/
@@ -168,16 +194,24 @@ LPC1.t = LPC0;
 LPC0.t = 'b'1;
 [LPC3..0].ck = CCLK;
 [LPC3..0].ar = CRST;
-[LPC3..0].ce =  TLC5 & !TLC4 & /** Only count after a token line scan is completed (39) **/
-               !TLC3 & TLC2 & TLC1 & TLC0;
+[LPC3..0].ce = !COLS80 &
+              (TLC5 & !TLC4 & /** Only count after a token line scan is completed (39) **/
+               !TLC3 & TLC2 & TLC1 & TLC0)
+               # COLS80 &
+               (TLC6 & !TLC5 & /** Only count after a token line scan is completed (79) **/
+               !TLC4 & TLC3 & TLC2 & TLC1 & TLC0);
 /** Because this counts from 0 to 15, it 'resets' itself automatically after 16 passes **/
 
 
 /************************************************************/
 /** Video memory Address counter, 11 bits (counts to 1200) **/
 /************************************************************/
-LD = TLC5 & !TLC4 & !TLC3 & TLC2 & TLC1 & TLC0 &
-     !(LPC3 & LPC2 & LPC1 & LPC0);
+LD = !COLS80 &
+     (TLC5 & !TLC4 & !TLC3 & TLC2 & TLC1 & TLC0 &
+     !(LPC3 & LPC2 & LPC1 & LPC0))
+     # COLS80 &
+     (TLC6 & !TLC5 & !TLC4 & TLC3 & TLC2 & TLC1 & TLC0 &
+     !(LPC3 & LPC2 & LPC1 & LPC0));
 /** Above: LoaD fall-back address when final address of token line reached but need to scan it again **/
 
 VMA10.t = LD  & !FBA10 &  VMA10 #
@@ -208,9 +242,13 @@ VMA4.t =  LD  & !FBA4  &  VMA4  #
           LD  &  FBA4  & !VMA4  #
          !LD  &  VMA3  &  VMA2  & VMA1 & VMA0;
 
-VMA3.t =  LD  & !FBA3  &  VMA3  #
+VMA3.t =  !COLS80 &
+          (LD  & !FBA3  &  VMA3  #
           LD  &  FBA3  & !VMA3  #
-         !LD  &  VMA2  &  VMA1  & VMA0;
+         !LD  &  VMA2  &  VMA1  & VMA0)
+         # COLS80 &
+         (LD  &  VMA3  # /** 4 least significant bits of FBA are always 0 (0, 80, 160, etc.) **/
+         !LD  &  VMA2  &  VMA1  & VMA0);
 
 VMA2.t =  LD  &  VMA2 # /** 3 least significant bits of FBA are always 0 (0, 40, 80, etc.) **/
          !LD  &  VMA1 & VMA0;
@@ -222,10 +260,16 @@ VMA0.t = !LD # /** 3 least significant bits of FBA are always 0 (0, 40, 80, etc.
           LD  &  VMA0;
 
 [VMA10..0].ck = CCLK;
-[VMA10..0].ar = CRST #
+[VMA10..0].ar = !COLS80 &
+                (CRST #
                ( VMA10 & !VMA9 & !VMA8 & /** Asynchronous reset at the end of frame (1200) **/
                  VMA7  & !VMA6 &  VMA5 &  VMA4 &
-                !VMA3  & !VMA2 & !VMA1 & !VMA0);
+                !VMA3  & !VMA2 & !VMA1 & !VMA0))
+                # COLS80 &
+                (CRST #
+               ( VMA10 & VMA9 & /** Asynchronous reset at the end of frame (2000) **/
+                 VMA8  & VMA7 &  VMA6 &  !VMA5 &
+                VMA4  & !VMA3 & !VMA2 & !VMA1 & !VMA0));
 
 
 /*********************************/
@@ -240,6 +284,10 @@ FBA5.d =  VMA5;
 FBA4.d =  VMA4;
 FBA3.d =  VMA3;
 [FBA10..3].ck = CCLK;
-[FBA10..3].ce = !LPC3 & !LPC2 & !LPC1 & !LPC0 & /** Latches once per token line, at start of first pass **/
-                !TLC5 & !TLC4 & !TLC3 & !TLC2 & !TLC1 & !TLC0;
+[FBA10..3].ce = !COLS80 &
+                (!LPC3 & !LPC2 & !LPC1 & !LPC0 & /** Latches once per token line, at start of first pass **/
+                !TLC5 & !TLC4 & !TLC3 & !TLC2 & !TLC1 & !TLC0)
+                # COLS80 &
+                (!LPC3 & !LPC2 & !LPC1 & !LPC0 & /** Latches once per token line, at start of first pass **/
+                !TLC6 & !TLC5 & !TLC4 & !TLC3 & !TLC2 & !TLC1 & !TLC0);
 [FBA10..3].ar = CRST;
