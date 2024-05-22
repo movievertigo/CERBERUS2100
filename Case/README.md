@@ -1,4 +1,4 @@
-# Cerberus2100 Case
+# Cerberus 2100 Case
 
 To secure the PCB to the case you will need five M2.5x6mm bolts and nuts.
 
